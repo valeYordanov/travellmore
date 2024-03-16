@@ -1,0 +1,29 @@
+<div class="container">
+    <h1 class="primary-header">Read About Our Journeys</h1>
+<article class="site-article">
+    <div class="blog-wrapper">
+      <div class="wrapper">
+        <div class="blog-card" *ngFor="let journey of journeys"
+        >
+          <div class="card-img">
+            <img [src]="journey.imageUrl" />
+  
+            <h1>{{ journey.location }}</h1>
+          </div>
+          <div class="card-details">
+            <span class="date"
+              ><i class="fa fa-calendar"></i>{{ journey.createdOn }}</span
+            ><span class="likes"
+              ><i class="fa fa-heart"></i>{{ journey.likes }}</span
+            >
+          </div>
+          <div class="card-text">
+            <p>{{ journey.description }}.</p>
+          </div>
+          <div class="read-more"><a href="">Read More...</a></div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div>

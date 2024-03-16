@@ -10,6 +10,8 @@ import { SharedModule } from './shared/shared.module';
 import { BlogModule } from './pages/blog/blog.module';
 import { UserModule } from './user/user.module';
 import { UserRoutingModule } from './user/user-routing.module';
+import { HomeBlogsComponent } from './pages/blog/home-blogs/home-blogs.component';
+
 
 
 
@@ -18,7 +20,8 @@ import { UserRoutingModule } from './user/user-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    
     
     
     

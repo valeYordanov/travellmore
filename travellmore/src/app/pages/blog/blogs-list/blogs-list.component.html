@@ -1,15 +1,17 @@
-<h1>Journeys</h1>
-<form>
-  <label for="search">Search</label>
-  <input type="text" placeholder="Search by name..." #filter/>
+<div class="container">
+  <h1>Journeys</h1>
+<form #f="ngForm" (ngSubmit)="search(f)">
+  <label for="search"></label>
+  <input type="text" placeholder="Search by title..." name="searchTerm" ngModel />
   
-  <button (click)="search(filter.value)">Search</button>
+  <button>Search</button>
 </form>
 
-<article class="site-article" >
+<article class="site-article">
   <div class="blog-wrapper">
     <div class="wrapper">
-      <div class="blog-card" *ngFor="let journey of filteredJourneys" >
+      <div class="blog-card" *ngFor="let journey of filteredJourneys"
+      >
         <div class="card-img">
           <img [src]="journey.imageUrl" />
 
@@ -30,3 +32,4 @@
     </div>
   </div>
 </article>
+</div>

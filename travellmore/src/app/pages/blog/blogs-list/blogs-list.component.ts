@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { Journey } from '../types/Journey';
 import { JourneyService } from 'src/app/shared/services/journey.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-blogs-list',
@@ -12,11 +13,8 @@ export class BlogsListComponent implements OnInit {
   journeys: Journey[] = [];
 
   filteredJourneys: Journey[] = [];
-  constructor(
-    private apiService: ApiService,
-    private journeyService: JourneyService
-  ) {
-    this.journeys = this.journeyService.getJourneys();
+  constructor(journeyService: JourneyService, private apiService: ApiService) {
+    this.journeys = journeyService.getJourneys();
     this.filteredJourneys = this.journeys;
   }
 
@@ -26,13 +24,22 @@ export class BlogsListComponent implements OnInit {
     });
   }
 
-  search(text: string) {
-    if (!text) {
+  search(form: NgForm) {
+    const { searchTerm } = form?.value;
+
+    if(form.invalid){
+      return
+    }
+
+    if (!searchTerm) {
       this.filteredJourneys = this.journeys;
+
       return;
     }
+
     this.filteredJourneys = this.journeys.filter((journey) =>
-      journey.location.toLocaleLowerCase().includes(text.toLowerCase())
+      journey.location.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    form.reset();
   }
 }

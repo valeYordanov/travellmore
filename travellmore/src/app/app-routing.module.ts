@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 
-import { MainComponent } from './pages/blog/main/main.component';
+
+import { BlogsListComponent } from './pages/blog/blogs-list/blogs-list.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
 
   {
     path: 'blogs',
-    component: MainComponent,
+    component: BlogsListComponent,
   },
  
 ];

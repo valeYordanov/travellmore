@@ -13,13 +13,7 @@ export class HeaderComponent {
     this.isLoggedIn = !this.isLoggedIn;
   }
 
-  onSaveData() {
-    this.apiService.storeJourneys();
-  }
+  
 
-  onFetchData(){
-    
-    
-    this.apiService.getJourneys()
-  }
+  
 }
