@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Outfit:wght@100..900&family=Satisfy&display=swap');
+
+
+
+.welcome-msg{
+    background-image: url(/../../../assets/images/photo-1507525428034-b723cf961d3e.avif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    padding: 10em;
+    
+    
+    
+}
+
+.welcome-msg h2{
+    color: #fff;
+    font-family: "Courgette" ;
+    font-size: 70px;
+    font-weight: 300;
+}
+
+.welcome-msg .first{
+    color: #E14747;
+    font-family: "Satisfy";
+}
+
+.welcome-msg p {
+    color: #fff;
+    font-family: "Courgette";
+    font-size: 30px;
+    font-weight: 300;
+    padding-bottom: 1em;
+}
+
+
+
+.welcome-msg .second{
+    color: #E14747;
+    font-family: "Satisfy";
+    font-size: 30px;
+    
+    
+}

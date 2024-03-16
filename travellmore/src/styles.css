@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url(https://fonts.googleapis.com/css2?family=Karla&display=swap);
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    background-color: #fff;
+}
+
+html{
+  font: 18px/1.5 "Karla"
+}
+
+
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1,a{
+    font-family: Satisfy;
+}
+
+

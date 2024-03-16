@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+.register-img img {
+  
+  width: 600px;
+  height: 500px;
+  border-radius: 15px;
+}
+input{
+    width: 400px;
+    height: 40px;
+    margin: 8px 0;
+    padding: 12px 20px;
+    border: 2px solid #E14747;
+    
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  width: 100%;
+  
+  
+ 
+
+  
+}
+
+button {
+    font-family: "Karla";
+  background-color: #E14747;
+  width: 400px;
+  color: #fff;
+  padding: 15px;
+  margin: 10px 0px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 18px;
+  
+}
+
+button:hover{
+    background-color: rgb(242, 237, 235);
+    color: black;
+   border-color: #E14747;
+    
+}
+form {
+  border: 3px solid #f1f1f1;
+}
+
+.inputs h1{
+    text-align: center;
+}
+
+.inputs p a {
+    color: grey;
+    text-decoration: none;
+    font-size: 20px;
+    
+}
+.inputs p a:hover{
+    color: #E14747;
+}
+
+
+
