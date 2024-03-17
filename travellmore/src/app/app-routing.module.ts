@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 
 
 import { BlogsListComponent } from './pages/blog/blogs-list/blogs-list.component';
+import { AddJourneyComponent } from './pages/add-journey/add-journey.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
     path: 'blogs',
     component: BlogsListComponent,
   },
+  {
+    path: "add-journey",
+    component:AddJourneyComponent
+  }
  
 ];
 

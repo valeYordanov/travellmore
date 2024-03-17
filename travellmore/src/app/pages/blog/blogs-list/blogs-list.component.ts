@@ -1,5 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ApiService } from 'src/app/shared/services/api.service';
+import { Component, OnInit } from '@angular/core';
 import { Journey } from '../types/Journey';
 import { JourneyService } from 'src/app/shared/services/journey.service';
 import { NgForm } from '@angular/forms';
@@ -13,23 +12,21 @@ export class BlogsListComponent implements OnInit {
   journeys: Journey[] = [];
 
   filteredJourneys: Journey[] = [];
-  constructor(journeyService: JourneyService, private apiService: ApiService) {
-    this.journeys = journeyService.getJourneys();
-    this.filteredJourneys = this.journeys;
-  }
+  constructor(private journeyService: JourneyService) {}
 
   ngOnInit(): void {
-    this.apiService.getJourneys().subscribe((journeys) => {
-      this.journeys = journeys;
+    this.journeyService.fetchJourneys().subscribe((res) => {
+      this.journeys = res;
+      this.filteredJourneys = res;
     });
   }
 
   search(form: NgForm) {
     const { searchTerm } = form?.value;
 
-    if(form.invalid){
-      return
-    }
+    // if(form.invalid){
+    //   return
+    // }
 
     if (!searchTerm) {
       this.filteredJourneys = this.journeys;
@@ -38,8 +35,14 @@ export class BlogsListComponent implements OnInit {
     }
 
     this.filteredJourneys = this.journeys.filter((journey) =>
-      journey.location.toLowerCase().includes(searchTerm.toLowerCase())
+      journey.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     form.reset();
+  }
+
+  deleteData() {
+    this.journeyService.deleteJourneys().subscribe(() => {
+      this.journeys = [];
+    });
   }
 }

@@ -13,7 +13,8 @@ export class HeaderComponent {
     this.isLoggedIn = !this.isLoggedIn;
   }
 
-  
+  // populateData() {
+  //   this.apiService.storeJourneys()
+  // }
 
-  
 }

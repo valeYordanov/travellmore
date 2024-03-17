@@ -1,10 +1,13 @@
 
 
 .site-footer{
+    
     background-color: black;
+    flex-direction: row;
     color: #fff;
     position: fixed;
     bottom: 0;
     width: 100%;
     padding-left: 31em;
+    
 }

@@ -1,23 +1,9 @@
-export class Journey {
-  public imageUrl: string;
-  public location: string;
-  public description: string;
-  public likes: number;
-  public createdOn: string;
-
-  constructor(
-    imageUrl: string,
-    location: string,
-    desc: string,
-    createdOn: string,
-    likes: number
-  ) {
-    this.imageUrl = imageUrl;
-
-    this.location = location;
-    this.description = desc;
-    this.createdOn = createdOn;
-
-    this.likes = likes;
-  }
+export interface Journey {
+  title: string;
+  desc: string;
+  author: string;
+  date: string;
+  img:string
+  content: string;
+  id?:string
 }

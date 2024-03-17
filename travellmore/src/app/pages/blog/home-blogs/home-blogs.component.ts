@@ -12,9 +12,11 @@ export class HomeBlogsComponent implements OnInit {
   journeys: Journey[] = [];
 
   ngOnInit(): void {
-    this.apiService.getJourneys().subscribe(journey =>{
-      this.journeys = journey
-    })
+    // this.apiService.getJourneys().subscribe(journey =>{
+    //   this.journeys = journey
+    //   console.log(this.journeys);
+      
+    // })
   }
 
 }
