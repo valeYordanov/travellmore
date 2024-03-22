@@ -21,9 +21,9 @@ const routes: Routes = [
     path:'profile',
     component:ProfileComponent
   },
-  {
-    path:'**',redirectTo:"/404"
- },
+//   {
+//     path:'**',redirectTo:"/404"
+//  },
  {
    path:'404',component:PageNotFoundComponent
  },

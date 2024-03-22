@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from './shared/shared.module';
-import { BlogModule } from './pages/views.module';
+import {  ViewsModule } from './pages/views.module';
 import { UserModule } from './user/user.module';
 import { UserRoutingModule } from './user/user-routing.module';
 
@@ -21,7 +21,7 @@ import { UserRoutingModule } from './user/user-routing.module';
     CoreModule,
     SharedModule,
     UserModule,
-    BlogModule,
+    ViewsModule,
     UserRoutingModule,
     HttpClientModule,
   ],

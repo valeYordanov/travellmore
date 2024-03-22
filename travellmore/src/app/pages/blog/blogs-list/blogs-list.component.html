@@ -1,4 +1,4 @@
-<div class="container">
+<div class="contain">
   <h1>Journeys</h1>
   <form #f="ngForm" (ngSubmit)="search(f)">
     <label for="search"></label>
@@ -11,26 +11,26 @@
 
     <button>Search</button>
   </form>
-<button (click)="deleteData()">delete</button>
+  <button (click)="deleteData()">delete</button>
   <article class="site-article">
-    <div class="blog-wrapper">
-      <div class="wrapper">
-        <div class="blog-card" *ngFor="let journey of filteredJourneys">
-          <div class="card-img">
-            <img [src]="journey.img" />
+    <div class="blog-card" *ngFor="let journey of filteredJourneys">
+      <div class="card-img">
+        <img [src]="journey.img" />
+      </div>
+      <h1>{{ journey.title }}</h1>
+      <div class="card-details">
+        <span class="date"
+          ><i class="fa fa-calendar">{{ journey.date }}</i></span
+        ><span class="likes"
+          ><i class="fa fa-user">{{ journey.author }}</i></span
+        >
+      </div>
+      <div class="card-text">
+        <p>{{ journey.desc | slice : 0 : 96 }}</p>
+      </div>
 
-            <h1>{{ journey.title }}</h1>
-          </div>
-          <div class="card-details">
-            <span class="date"
-              ><i class="fa fa-calendar">{{ journey.date }}</i></span
-            ><span class="likes"><i class="fa fa-heart">{{journey.author}}</i></span>
-          </div>
-          <div class="card-text">
-            <p>{{journey.desc}}</p>
-          </div>
-          <div class="read-more"><a href="">Read More...</a></div>
-        </div>
+      <div class="read-more">
+        <a routerLink="/blogs/{{ journey.id }}">Read More...</a>
       </div>
     </div>
   </article>

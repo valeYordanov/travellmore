@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Journey } from '../types/Journey';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { JourneyService } from 'src/app/shared/services/journey.service';
 
 @Component({
   selector: 'app-home-blogs',
@@ -8,15 +9,16 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./home-blogs.component.css'],
 })
 export class HomeBlogsComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
+  constructor(private journeyService:JourneyService) {}
   journeys: Journey[] = [];
 
   ngOnInit(): void {
-    // this.apiService.getJourneys().subscribe(journey =>{
-    //   this.journeys = journey
-    //   console.log(this.journeys);
+    this.journeyService.fetchJourneys().subscribe(res => {
+      this.journeys = res
       
-    // })
+    })
+
+    
   }
 
 }

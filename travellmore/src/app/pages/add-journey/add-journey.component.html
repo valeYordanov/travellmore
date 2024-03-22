@@ -3,7 +3,7 @@
     <div class="form">
       <h1>Add your trip</h1>
 
-      <form #postForm="ngForm" class="add-form" (ngSubmit)="createPost(postForm,postForm.value)">
+      <form #postForm="ngForm" class="add-form" (ngSubmit)="createPost(postForm.value)">
         <label for="title">Title</label>
         <input type="text" placeholder="Add title" name="title" ngModel />
         <label for="description">Description</label>

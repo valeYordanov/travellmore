@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="wrapper">
+    <h1>{{ journey.title }}</h1>
+
+    <div class="journey-img">
+      <img [src]="journey.img" alt="" />
+    </div>
+
+    <div class="desc">
+        <p>{{journey.desc}}</p>
+    </div>
+
+    <div class="author-details">
+      <p>Author: {{journey.author}}</p>
+      <p><i class="fa fa-calendar"></i>{{journey.date}}</p>
+    </div>
+
+
+    <div class="content">
+      <p>{{journey.content}}</p>
+    </div>
+
+    <button (click)="deletePost()">Delete</button>
+    <button>Edit</button>
+  </div>
+</div>

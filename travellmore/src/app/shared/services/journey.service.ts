@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 import { Journey } from 'src/app/pages/blog/types/Journey';
 @Injectable({ providedIn: 'root' })
 export class JourneyService {
+  journeys: Journey[] = [];
   constructor(private http: HttpClient) {}
   storeJourneys(
     title: string,
@@ -25,33 +26,44 @@ export class JourneyService {
       id: id,
     };
 
-    this.http
-      .post(
-        'https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json',
-        postData
-      )
-      .subscribe((res) => {
-        console.log(res);
-      });
+    return this.http.post<Journey>(
+      'https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json',
+      postData
+    );
   }
 
   fetchJourneys() {
     return this.http
-      .get<{ [key: string]: Journey }>(
+      .get<Journey[]>(
         'https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json'
       )
       .pipe(
         map((res) => {
-          const journeysArray: Journey[] = [];
-          for (const key in res) {
-            journeysArray.push({ ...res[key], id: key });
+          const journeyArray: Journey[] = [];
+          for (let key in res) {
+            journeyArray.push({ ...res[key], id: key });
           }
-          return journeysArray;
+
+          return journeyArray;
         })
       );
   }
 
-  deleteJourneys(){
-    return this.http.delete('https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json')
+  getJourneysById(id: string | undefined) {
+    return this.http.get(
+      `https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys/${id}.json`
+    );
+  }
+
+  deleteJourneys() {
+    return this.http.delete(
+      'https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json'
+    );
+  }
+
+  deleteJourneyById(id: string | undefined) {
+    return this.http.delete(
+      `https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys/${id}.json`
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Journey } from '../types/Journey';
 import { JourneyService } from 'src/app/shared/services/journey.service';
 import { NgForm } from '@angular/forms';
@@ -10,23 +10,19 @@ import { NgForm } from '@angular/forms';
 })
 export class BlogsListComponent implements OnInit {
   journeys: Journey[] = [];
-
   filteredJourneys: Journey[] = [];
+
   constructor(private journeyService: JourneyService) {}
 
   ngOnInit(): void {
     this.journeyService.fetchJourneys().subscribe((res) => {
-      this.journeys = res;
-      this.filteredJourneys = res;
+      this.journeys.push(...res);
+      this.filteredJourneys = this.journeys;
     });
   }
 
   search(form: NgForm) {
-    const { searchTerm } = form?.value;
-
-    // if(form.invalid){
-    //   return
-    // }
+    const { searchTerm } = form.value;
 
     if (!searchTerm) {
       this.filteredJourneys = this.journeys;

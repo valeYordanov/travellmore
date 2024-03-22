@@ -1,63 +1,68 @@
-.card-text{
-    font-family: "Karla";
-  }
+.card-text {
+  font-family: "Karla";
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.primary-header {
+  color: #e14747;
+  text-align: center;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.site-article {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+   text-align: center;
+  /* padding-left: 2em; */
+  width: 95%;
+  align-self: center;
+}
+
+.blog-card {
+  padding-bottom: 1em;
+}
+
+.blog-card{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap:1em
   
-  .container{
-    max-width: 1200px;
-  }
-  
- .primary-header{
-    color: #E14747;
-    text-align: center;
-    padding-top: 2em;
- }
-  
-  .wrapper{
-    width: 100%;
-    display: flex;
-    gap: 2em;
-  }
-  
-  
-  .blog-card{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* gap: 1em; */
-    margin-bottom: 1em;
-    margin-top: 2em;
-  }
-  
-  .card-img img{
-    width: 100%;
-    border-radius: 15px;
-  }
-  
-  
-  .blog-wrapper{
-    width: 100%;
-    height: 100%;
-  }
-  
-  .date{
-    margin-right: 24em;
-  }
-  .read-more a {
-      display: block;
-      
-      font-size: 20px;
-      text-decoration: none;
-      color: grey;
-      padding: 0.5em 1em;
-      border: 2px solid black;
-      border-radius: 10px;
-      margin-bottom: 1em;
-      transition: all 0.3s;
-      
-  }
-  .read-more a:hover{
-      background-color: skyblue;
-      color: #fff;
-  }
+}
+
+.card-img{
+  width: 100%;
+}
+
+.card-img img{
+  border-radius: 10px;
+  width: 95%;
+  height: 300px
+}
+
+.card-details{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.read-more a {
+  display: block;
+
+  font-size: 20px;
+  text-decoration: none;
+  color: grey;
+  padding: 0.5em 1em;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-bottom: 1em;
+  transition: all 0.3s;
+}
+.read-more a:hover {
+  background-color: skyblue;
+  color: #fff;
+}

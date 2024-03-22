@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { JourneyService } from 'src/app/shared/services/journey.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class HeaderComponent {
   isLoggedIn: boolean = true;
-  constructor(private apiService: ApiService) {}
+  constructor(private journeyService:JourneyService) {}
   onSwitch() {
     this.isLoggedIn = !this.isLoggedIn;
   }
@@ -17,4 +18,7 @@ export class HeaderComponent {
   //   this.apiService.storeJourneys()
   // }
 
+  onFetchdata(){
+    this.journeyService.fetchJourneys()
+  }
 }

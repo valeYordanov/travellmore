@@ -8,10 +8,12 @@ import { FormsModule } from '@angular/forms';
 
 import { HomeBlogsComponent } from './blog/home-blogs/home-blogs.component';
 import { AddJourneyComponent } from './add-journey/add-journey.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [BlogsListComponent, HomeBlogsComponent,AddJourneyComponent],
-  imports: [CommonModule, HttpClientModule, FormsModule ,HttpClientModule],
-  exports: [BlogsListComponent,HomeBlogsComponent,AddJourneyComponent],
+  declarations: [BlogsListComponent, HomeBlogsComponent,AddJourneyComponent, PostDetailsComponent],
+  imports: [CommonModule, HttpClientModule, FormsModule ,HttpClientModule,RouterModule],
+  exports: [BlogsListComponent,HomeBlogsComponent,AddJourneyComponent,PostDetailsComponent],
 })
-export class BlogModule {}
+export class ViewsModule {}
