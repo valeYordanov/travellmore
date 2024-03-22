@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 import { Journey } from 'src/app/pages/blog/types/Journey';
+import { JourneyModel } from 'src/app/pages/blog/types/journey.model';
 @Injectable({ providedIn: 'root' })
 export class JourneyService {
   journeys: Journey[] = [];
@@ -49,8 +50,8 @@ export class JourneyService {
       );
   }
 
-  getJourneysById(id: string | undefined) {
-    return this.http.get(
+  getJourneysById(id: string | undefined) : Observable<Journey> {
+    return this.http.get<Journey>(
       `https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys/${id}.json`
     );
   }
@@ -61,9 +62,13 @@ export class JourneyService {
     );
   }
 
-  deleteJourneyById(id: string | undefined) {
-    return this.http.delete(
+  deleteJourneyById(id: string | undefined) : Observable<Journey> {
+    return this.http.delete<Journey>(
       `https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys/${id}.json`
     );
+  }
+
+  updateJourneyById(id:string | undefined,postData:Journey) :Observable<Journey> {
+    return this.http.patch<Journey>(`https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys/${id}.json`,postData)
   }
 }

@@ -4,7 +4,8 @@ import { HomeComponent } from './pages/home/home.component';
 
 import { BlogsListComponent } from './pages/blog/blogs-list/blogs-list.component';
 import { AddJourneyComponent } from './pages/add-journey/add-journey.component';
-import { PostDetailsComponent } from './pages/post-details/post-details.component';
+import { BlogDetailsComponent } from './pages/blog/blog-details/blog-details.component';
+import { BlogEditComponent } from './pages/blog/blog-edit/blog-edit.component';
 
 const routes: Routes = [
   {
@@ -19,13 +20,16 @@ const routes: Routes = [
 
   {
     path: 'blogs',
-    component: BlogsListComponent, 
-    
+    component: BlogsListComponent,
   },
   {
     path: 'blogs/:id',
-    component: PostDetailsComponent, 
-    
+    component: BlogDetailsComponent,
+  }
+  ,
+  {
+    path: 'blogs/:id/edit',
+    component: BlogEditComponent,
   },
   {
     path: 'add-journey',

@@ -8,12 +8,13 @@ import { FormsModule } from '@angular/forms';
 
 import { HomeBlogsComponent } from './blog/home-blogs/home-blogs.component';
 import { AddJourneyComponent } from './add-journey/add-journey.component';
-import { PostDetailsComponent } from './post-details/post-details.component';
+import { BlogDetailsComponent } from './blog/blog-details/blog-details.component';
 import { RouterModule } from '@angular/router';
+import { BlogEditComponent } from './blog/blog-edit/blog-edit.component';
 
 @NgModule({
-  declarations: [BlogsListComponent, HomeBlogsComponent,AddJourneyComponent, PostDetailsComponent],
+  declarations: [BlogsListComponent, HomeBlogsComponent,AddJourneyComponent, BlogDetailsComponent, BlogEditComponent],
   imports: [CommonModule, HttpClientModule, FormsModule ,HttpClientModule,RouterModule],
-  exports: [BlogsListComponent,HomeBlogsComponent,AddJourneyComponent,PostDetailsComponent],
+  exports: [BlogsListComponent,HomeBlogsComponent,AddJourneyComponent,BlogDetailsComponent,BlogsListComponent],
 })
 export class ViewsModule {}

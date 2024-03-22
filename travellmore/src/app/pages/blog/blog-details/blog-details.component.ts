@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { Journey } from '../blog/types/Journey';
+import { Component, Input, OnInit } from '@angular/core';
+import { Journey } from '../types/Journey';
 import { JourneyService } from 'src/app/shared/services/journey.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
+
+
 @Component({
-  selector: 'app-post-details',
-  templateUrl: './post-details.component.html',
-  styleUrls: ['./post-details.component.css'],
+  selector: 'app-blog-details',
+  templateUrl: './blog-details.component.html',
+  styleUrls: ['./blog-details.component.css'],
 })
-export class PostDetailsComponent implements OnInit {
+export class BlogDetailsComponent implements OnInit {
   journeys: Journey[] = [];
 
-  journey: any;
+  journey?:Journey 
 
-  id?: string;
+  @Input()id: string | undefined;
+  
 
   constructor(
     private journeyService: JourneyService,

@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="full-form">
+        <img src="/../../../assets/images/edit-pic.jpeg" alt="" />
+      <div class="form">
+        <h1>You want to change something?</h1>
+  
+        <form #postForm="ngForm" class="add-form" (ngSubmit)="updateJourney(postForm.value)">
+          <label for="title">Title</label>
+          <input type="text" placeholder="Add title" name="title" ngModel />
+          <label for="description">Description</label>
+          <textarea
+            name="desc"
+            id="desc"
+            cols="60"
+            rows="3"
+            placeholder="Add description here..."
+            ngModel
+          ></textarea>
+          <label for="author">Author</label>
+          <input type="text" placeholder="Author" name="author" ngModel />
+          <label for="date">Date</label>
+          <input type="date" placeholder="DD/MM/YY" name="date" ngModel/>
+          <label for="image">Add picture</label>
+          <input type="text" placeholder="Add image URL" name="img" ngModel />
+          <label for="content">Add content</label>
+          <textarea
+            name="content"
+            id="content"
+            cols="60"
+            rows="4"
+            placeholder="Add content here..."
+            ngModel
+          ></textarea>
+          <div class="buttons">
+            <button>Update</button>
+            <button type="button" (click)="goBack()">Go Back</button>
+          </div>
+          
+        </form>
+      </div>
+      
+    </div>
+  </div>
