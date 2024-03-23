@@ -22,7 +22,8 @@ html{
 .container{
     max-width: 1200px;
     margin: 0 auto;
-    max-height: max-content;
+    min-height: 100vh;
+    
 }
 
 h1,a{

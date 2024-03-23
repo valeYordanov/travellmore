@@ -6,6 +6,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserRoutingModule } from './user-routing.module';
 import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+
+
 
 
 
@@ -14,11 +17,13 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    
+    
   ],
   imports: [
-    CommonModule,UserRoutingModule,FormsModule
+    CommonModule,UserRoutingModule,FormsModule,SharedModule
   ],
-  exports:[LoginComponent,RegisterComponent,ProfileComponent,PageNotFoundComponent]
+  exports:[LoginComponent,RegisterComponent,ProfileComponent]
 })
 export class UserModule { }

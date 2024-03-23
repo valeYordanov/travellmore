@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Journey } from '../types/Journey';
+import { Journey } from '../journey-type/Journey';
 import { JourneyService } from 'src/app/shared/services/journey.service';
 import { NgForm } from '@angular/forms';
 
@@ -9,15 +9,23 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./blogs-list.component.css'],
 })
 export class BlogsListComponent implements OnInit {
+  isLoading = true;
   journeys: Journey[] = [];
   filteredJourneys: Journey[] = [];
 
   constructor(private journeyService: JourneyService) {}
 
   ngOnInit(): void {
+    
+
     this.journeyService.fetchJourneys().subscribe((res) => {
       this.journeys.push(...res);
+
       this.filteredJourneys = this.journeys;
+      setTimeout(() => {
+        this.isLoading = false;
+      },500)
+      
     });
   }
 

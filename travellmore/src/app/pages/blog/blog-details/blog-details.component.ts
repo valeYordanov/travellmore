@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Journey } from '../types/Journey';
+import { Journey } from '../journey-type/Journey';
 import { JourneyService } from 'src/app/shared/services/journey.service';
 
 import { ActivatedRoute, Router } from '@angular/router';

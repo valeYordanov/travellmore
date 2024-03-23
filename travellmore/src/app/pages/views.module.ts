@@ -11,10 +11,11 @@ import { AddJourneyComponent } from './add-journey/add-journey.component';
 import { BlogDetailsComponent } from './blog/blog-details/blog-details.component';
 import { RouterModule } from '@angular/router';
 import { BlogEditComponent } from './blog/blog-edit/blog-edit.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [BlogsListComponent, HomeBlogsComponent,AddJourneyComponent, BlogDetailsComponent, BlogEditComponent],
-  imports: [CommonModule, HttpClientModule, FormsModule ,HttpClientModule,RouterModule],
+  imports: [CommonModule, HttpClientModule, FormsModule ,HttpClientModule,RouterModule,SharedModule],
   exports: [BlogsListComponent,HomeBlogsComponent,AddJourneyComponent,BlogDetailsComponent,BlogsListComponent],
 })
 export class ViewsModule {}

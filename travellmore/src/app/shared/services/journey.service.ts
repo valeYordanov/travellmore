@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
-import { Journey } from 'src/app/pages/blog/types/Journey';
-import { JourneyModel } from 'src/app/pages/blog/types/journey.model';
+import { Journey } from 'src/app/pages/blog/journey-type/Journey';
+
 @Injectable({ providedIn: 'root' })
 export class JourneyService {
   journeys: Journey[] = [];

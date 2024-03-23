@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Journey } from '../types/Journey';
-import { ApiService } from 'src/app/shared/services/api.service';
+import { Journey } from '../journey-type/Journey';
+
 import { JourneyService } from 'src/app/shared/services/journey.service';
 
 @Component({

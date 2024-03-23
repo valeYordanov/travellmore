@@ -11,9 +11,13 @@
 
     <button>Search</button>
   </form>
-  <button (click)="deleteData()">delete</button>
-  <article class="site-article">
-    <div class="blog-card" *ngFor="let journey of filteredJourneys">
+  <div *ngIf="isLoading" style="text-align: center;">
+    <app-loading-spinner ></app-loading-spinner>
+  </div>
+ 
+  <div class="container">
+  <article class="site-article" *ngIf="!isLoading">
+    <div class="blog-card" *ngFor="let journey of filteredJourneys" >
       <div class="card-img">
         <img [src]="journey.img" />
       </div>
@@ -34,4 +38,5 @@
       </div>
     </div>
   </article>
+</div>
 </div>

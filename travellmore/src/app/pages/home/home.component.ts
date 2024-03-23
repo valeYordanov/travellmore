@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/shared/services/api.service';
+
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class HomeComponent implements OnInit{
 
-constructor(private api:ApiService) {}
+constructor() {}
   ngOnInit(): void {
     // this.api.getJourneys()
   }

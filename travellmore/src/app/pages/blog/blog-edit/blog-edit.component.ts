@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Journey } from '../types/Journey';
+import { Journey } from '../journey-type/Journey';
 import { NgForm } from '@angular/forms';
 import { JourneyService } from 'src/app/shared/services/journey.service';
 
@@ -14,7 +14,7 @@ export class BlogEditComponent implements OnInit {
   editedJourney?: Journey;
 
   @ViewChild('postForm', { static: false }) updateForm?: NgForm;
-  id!: string | undefined
+  id!: string | undefined;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -39,10 +39,10 @@ export class BlogEditComponent implements OnInit {
     this.router.navigate([`/blogs/${this.id}`]);
   }
 
-  updateJourney(postForm:Journey){
+  updateJourney(postForm: Journey) {
     this.id = this.activatedRoute.snapshot.params['id'];
-      this.journeyService.updateJourneyById(this.id,postForm).subscribe(() => {
-        this.router.navigate([`/blogs/${this.id}`])
-      })
+    this.journeyService.updateJourneyById(this.id, postForm).subscribe(() => {
+      this.router.navigate([`/blogs/${this.id}`]);
+    });
   }
 }

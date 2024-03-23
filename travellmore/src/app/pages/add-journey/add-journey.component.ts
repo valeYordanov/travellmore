@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Journey } from '../blog/types/Journey';
+import { Journey } from '../blog/journey-type/Journey';
 import { JourneyService } from 'src/app/shared/services/journey.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from 'src/app/shared/services/api.service';
+
 import { JourneyService } from 'src/app/shared/services/journey.service';
 
 @Component({
