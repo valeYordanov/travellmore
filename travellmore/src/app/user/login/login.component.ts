@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +8,21 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  onSubmit(form : NgForm){
-     console.log(form.value);
-     
+ errorFound:any = null
+ isLoading = false
+  constructor(private userService:UserService){}
+  login(form: NgForm) {
+    
+    const { email, password } = form.value;
+    this.isLoading= true
+    this.userService.login(email,password).subscribe({
+      next: () => {
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.errorFound = err;
+        this.isLoading = false;
+      },
+    });
   }
 }

@@ -10,12 +10,10 @@
     </div>
     <div class="inputs">
       <h1>Register</h1>
-      <div class="alert alert-danger"></div>
-      <div *ngIf="error">
-        <app-toaster (error)="error"></app-toaster>
+      <div class="alert alert-danger" *ngIf="errorFound">
+        <p>{{errorFound}}</p>
       </div>
       
-
       <input type="text" placeholder="Enter Email..." name="email" required ngModel/>
 
       <input

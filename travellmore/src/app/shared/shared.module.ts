@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
-import { ToasterComponent } from './toaster/toaster.component';
+
 
 
 
@@ -10,11 +10,11 @@ import { ToasterComponent } from './toaster/toaster.component';
   declarations: [
     WelcomeComponent,
     LoadingSpinnerComponent,
-    ToasterComponent
+    
   ],
   imports: [
     CommonModule
   ],
-  exports:[WelcomeComponent,LoadingSpinnerComponent,ToasterComponent]
+  exports:[WelcomeComponent,LoadingSpinnerComponent]
 })
 export class SharedModule { }

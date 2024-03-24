@@ -4,4 +4,5 @@ export interface User {
   refreshToken: string;
   expiresIn: string;
   localId: string;
+  registered?:boolean
 }
