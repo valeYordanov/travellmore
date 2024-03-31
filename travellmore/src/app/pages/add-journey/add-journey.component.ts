@@ -1,10 +1,11 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Journey } from '../blog/journey-type/Journey';
+import { Component } from '@angular/core';
+
 import { JourneyService } from 'src/app/shared/services/journey.service';
-import { NgForm } from '@angular/forms';
+
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Journey } from '../blog/journey-type/Journey';
 
 @Component({
   selector: 'app-add-journey',
@@ -13,6 +14,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AddJourneyComponent {
   constructor(private journeyService: JourneyService, private router: Router) {}
+  userId?: string;
 
   createPost(postData: Journey) {
     this.journeyService
@@ -22,10 +24,11 @@ export class AddJourneyComponent {
         postData.author,
         postData.date,
         postData.img,
-        postData.content
-      ).subscribe(() =>{
-        this.router.navigate(['/blogs'])
-      })
-      
+        postData.content,
+        postData.ownerId
+      )
+      .subscribe(() => {
+        this.router.navigate(['/blogs']);
+      });
   }
 }

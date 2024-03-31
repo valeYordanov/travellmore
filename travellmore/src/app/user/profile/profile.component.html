@@ -1,4 +1,22 @@
 <div class="container">
-    <p>profile works!</p>
+  <div class="card">
+    <div class="profile-picture">
+      <img src="/../../../assets/images/profile-picture.png" alt="" />
+    </div>
+    <div class="username">
+      <p>Username: {{user?.username}} </p>
+    </div>
+    <div class="email">
+      <p>Email: {{user?.email}}</p>
+    </div>
+    <div class="tel">
+      <p>Phone number: {{user?.tel}}</p>
+    </div>
+    <div class="country">
+      <p>Country: {{user?.country}}</p>
+    </div>
+    <div class="button-edit">
+      <a routerLink="/profile/{{id}}/edit">Edit</a>
+    </div>
+  </div>
 </div>
-

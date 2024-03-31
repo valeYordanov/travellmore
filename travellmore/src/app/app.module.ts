@@ -10,6 +10,14 @@ import { SharedModule } from './shared/shared.module';
 import {  ViewsModule } from './pages/views.module';
 import { UserModule } from './user/user.module';
 import { UserRoutingModule } from './user/user-routing.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/app/enviroments/enviroments';
+import{AngularFireDatabaseModule} from '@angular/fire/compat/database'
+import { AngularFireDatabase } from '@angular/fire/compat/database'
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { ProfileService } from './shared/services/profile.service';
+
+
 
 
 
@@ -23,10 +31,12 @@ import { UserRoutingModule } from './user/user-routing.module';
     SharedModule,
     UserModule,
     ViewsModule,
-    UserRoutingModule,
+    
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [ProfileService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

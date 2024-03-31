@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+
 import { Observable, map } from 'rxjs';
 
 import { Journey } from 'src/app/pages/blog/journey-type/Journey';
@@ -7,7 +9,8 @@ import { Journey } from 'src/app/pages/blog/journey-type/Journey';
 @Injectable({ providedIn: 'root' })
 export class JourneyService {
   journeys: Journey[] = [];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private auth: AngularFireAuth) {}
+  uid!: string;
   storeJourneys(
     title: string,
     desc: string,
@@ -15,8 +18,12 @@ export class JourneyService {
     date: string,
     img: string,
     content: string,
+
     id?: string
   ) {
+    this.auth.onAuthStateChanged((user) => {
+      this.uid = user!.uid;
+    });
     const postData: Journey = {
       title: title,
       desc: desc,
@@ -24,6 +31,7 @@ export class JourneyService {
       date: date,
       img: img,
       content: content,
+      ownerId: this.uid,
       id: id,
     };
 
@@ -34,6 +42,9 @@ export class JourneyService {
   }
 
   fetchJourneys() {
+    this.auth.onAuthStateChanged((user) => {
+      this.uid = user!.uid;
+    });
     return this.http
       .get<Journey[]>(
         'https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json'
@@ -45,12 +56,14 @@ export class JourneyService {
             journeyArray.push({ ...res[key], id: key });
           }
 
+          console.log(journeyArray);
+
           return journeyArray;
         })
       );
   }
 
-  getJourneysById(id: string | undefined) : Observable<Journey> {
+  getJourneysById(id: string | undefined): Observable<Journey> {
     return this.http.get<Journey>(
       `https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys/${id}.json`
     );
@@ -62,13 +75,19 @@ export class JourneyService {
     );
   }
 
-  deleteJourneyById(id: string | undefined) : Observable<Journey> {
+  deleteJourneyById(id: string | undefined): Observable<Journey> {
     return this.http.delete<Journey>(
       `https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys/${id}.json`
     );
   }
 
-  updateJourneyById(id:string | undefined,postData:Journey) :Observable<Journey> {
-    return this.http.patch<Journey>(`https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys/${id}.json`,postData)
+  updateJourneyById(
+    id: string | undefined,
+    postData: Journey
+  ): Observable<Journey> {
+    return this.http.patch<Journey>(
+      `https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys/${id}.json`,
+      postData
+    );
   }
 }

@@ -6,6 +6,11 @@ import { BlogsListComponent } from './pages/blog/blogs-list/blogs-list.component
 import { AddJourneyComponent } from './pages/add-journey/add-journey.component';
 import { BlogDetailsComponent } from './pages/blog/blog-details/blog-details.component';
 import { BlogEditComponent } from './pages/blog/blog-edit/blog-edit.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -25,8 +30,7 @@ const routes: Routes = [
   {
     path: 'blogs/:id',
     component: BlogDetailsComponent,
-  }
-  ,
+  },
   {
     path: 'blogs/:id/edit',
     component: BlogEditComponent,
@@ -34,6 +38,25 @@ const routes: Routes = [
   {
     path: 'add-journey',
     component: AddJourneyComponent,
+  },
+
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'profile/:id',
+
+    component: ProfileComponent,
+  },
+  {
+    path: 'profile/:id/edit',
+
+    component: EditProfileComponent,
   },
 ];
 

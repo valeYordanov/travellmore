@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="wrapper">
+  <div class="wrapper" >
     <h1>{{ journey?.title }}</h1>
 
     <div class="journey-img">
@@ -20,7 +20,7 @@
       <p>{{journey?.content}}</p>
     </div>
 
-    <button (click)="deletePost()">Delete</button>
-    <button routerLink="/blogs/{{id}}/edit">Edit</button>
+    <button *ngIf="isOwner(journey!.ownerId)" (click)="deletePost()">Delete</button>
+    <button *ngIf="isOwner(journey!.ownerId)" routerLink="/blogs/{{id}}/edit">Edit</button>
   </div>
 </div>

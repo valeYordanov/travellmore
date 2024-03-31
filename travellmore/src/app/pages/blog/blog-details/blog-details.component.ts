@@ -3,8 +3,7 @@ import { Journey } from '../journey-type/Journey';
 import { JourneyService } from 'src/app/shared/services/journey.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
-
-
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-blog-details',
@@ -12,20 +11,23 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./blog-details.component.css'],
 })
 export class BlogDetailsComponent implements OnInit {
-  journeys: Journey[] = [];
+  journey?: Journey;
 
-  journey?:Journey 
+  @Input() id: string | undefined;
 
-  @Input()id: string | undefined;
-  
+  currentUser?: string;
 
   constructor(
     private journeyService: JourneyService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private auth: AngularFireAuth
   ) {}
 
   ngOnInit(): void {
+    this.auth.authState.subscribe((user) => {
+      this.currentUser = user?.uid;
+    });
     this.id = this.activatedRoute.snapshot.params['id'];
 
     this.journeyService.getJourneysById(this.id).subscribe((res) => {
@@ -38,5 +40,9 @@ export class BlogDetailsComponent implements OnInit {
     this.journeyService.deleteJourneyById(this.id).subscribe(() => {
       this.router.navigate(['/blogs']);
     });
+  }
+
+  isOwner(ownerId: string): boolean {
+    return this.currentUser === ownerId;
   }
 }

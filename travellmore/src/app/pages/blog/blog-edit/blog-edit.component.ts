@@ -15,6 +15,7 @@ export class BlogEditComponent implements OnInit {
 
   @ViewChild('postForm', { static: false }) updateForm?: NgForm;
   id!: string | undefined;
+  
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,

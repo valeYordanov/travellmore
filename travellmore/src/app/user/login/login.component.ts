@@ -15,14 +15,6 @@ export class LoginComponent {
     
     const { email, password } = form.value;
     this.isLoading= true
-    this.userService.login(email,password).subscribe({
-      next: () => {
-        this.isLoading = false;
-      },
-      error: (err) => {
-        this.errorFound = err;
-        this.isLoading = false;
-      },
-    });
+    this.userService.login(email,password)
   }
 }

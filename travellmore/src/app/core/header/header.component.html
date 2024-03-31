@@ -7,13 +7,18 @@
     <ul>
       <li><a routerLink="/home" >Home</a></li>
       <li><a routerLink="/blogs" >Blogs</a></li>
-      <li><a routerLink="/add-journey">Add your experience</a></li>
+      <li *ngIf="isAuthenticated"><a routerLink="/add-journey" >Add your experience</a></li>
       <li><a href="#">Reviews</a></li>
-
-      <li (click)="onSwitch()">
-        <a routerLink="/login">{{ isLoggedIn ? "Sign Up" : "Login" }}</a>
+      <li *ngIf="!isAuthenticated" >
+        <a routerLink="/login">Signup</a>
       </li>
-      <li><a routerLink="/profile"><i class="fa fa-user"></i></a></li>
+      <li style="cursor: pointer;" *ngIf="isAuthenticated">
+        <a  (click)="loggingOut()">Logout</a>
+      </li>
+      <div class="user-profile" *ngIf="isAuthenticated">
+        <li><a routerLink="/profile/{{id}}"><i class="fa fa-user"></i></a></li>
+      </div>
+      
     </ul>
     
   </nav>

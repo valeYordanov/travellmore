@@ -1,11 +1,31 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
-import { User } from 'src/app/user/user-type/user';
+import {
+  Observable,
+  Subject,
+  catchError,
+  interval,
+  map,
+  switchMap,
+  throwError,
+} from 'rxjs';
+import { User } from 'src/app/user/user-type/authUser';
+import { BehaviorSubject } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { ProfileService } from './profile.service';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  authChange = new Subject<boolean>();
+
+  constructor(
+    private afauth: AngularFireAuth,
+    private http: HttpClient,
+    private router: Router,
+    private profileService:ProfileService
+  ) {}
 
   handleError(err: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurs!';
@@ -28,28 +48,17 @@ export class UserService {
     });
   }
 
-  register(email: string, password: string): Observable<User> {
-    return this.http
-      .post<User>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDe3KUweEF4senBxupnlBuNi2qdQe-wZN8',
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true,
-        }
-      )
-      .pipe(catchError(this.handleError));
+  register(email: string, password: string) {
+    return this.afauth.createUserWithEmailAndPassword(email, password)
   }
-  login(email: string, password: string): Observable<User> {
-    return this.http
-      .post<User>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDe3KUweEF4senBxupnlBuNi2qdQe-wZN8',
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true,
-        }
-      )
-      .pipe(catchError(this.handleError));
+
+  login(email: string, password: string) {
+    return this.afauth.signInWithEmailAndPassword(email, password);
+  }
+
+  logout() {
+    this.afauth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    });
   }
 }

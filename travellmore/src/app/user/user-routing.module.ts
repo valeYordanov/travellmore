@@ -9,24 +9,6 @@ import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.co
 
 const routes: Routes = [
   
-  {
-    path:'login',
-    component:LoginComponent
-  },
-  {
-    path:"register",
-    component:RegisterComponent
-  },
-  {
-    path:'profile',
-    component:ProfileComponent
-  },
-//   {
-//     path:'**',redirectTo:"/404"
-//  },
- {
-   path:'404',component:PageNotFoundComponent
- },
 ];
 
 @NgModule({

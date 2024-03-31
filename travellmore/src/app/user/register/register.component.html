@@ -1,9 +1,9 @@
 
-<div *ngIf="isLoading" style="text-align: center; margin-top: 2em;">
+<!-- <div *ngIf="isLoading" style="text-align: center; margin-top: 2em;">
    <app-loading-spinner></app-loading-spinner>
-</div>
+</div> -->
 
-<form #f="ngForm" (ngSubmit)="signUp(f)" *ngIf="!isLoading">
+<form #f="ngForm" (ngSubmit)="signUp(f)" >
   <div class="container">
     <div class="register-img">
       <img src="/../../../assets/images/register2.jpg" alt="" />
@@ -17,6 +17,15 @@
       <input type="text" placeholder="Enter Email..." name="email" required ngModel/>
 
       <input
+      type="text"
+      placeholder="Enter username..."
+      name="username"
+      required
+
+      ngModel
+    />
+
+      <input
         type="password"
         placeholder="Enter Password..."
         name="password"
@@ -25,7 +34,25 @@
         ngModel
       />
 
-      <button type="submit">Register</button>
+      <input
+        type="text"
+        placeholder="Enter country..."
+        name="country"
+        required
+
+        ngModel
+      />
+      
+      <input
+      type="text"
+      placeholder="Enter number..."
+      name="tel"
+      required
+
+      ngModel
+    />
+
+      <button>Register</button>
       <p>
         Already have an accout? <a routerLink="/login"><span>Login!</span></a>
       </p>

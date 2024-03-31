@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Journey } from '../journey-type/Journey';
 import { JourneyService } from 'src/app/shared/services/journey.service';
 import { NgForm } from '@angular/forms';
@@ -16,16 +16,14 @@ export class BlogsListComponent implements OnInit {
   constructor(private journeyService: JourneyService) {}
 
   ngOnInit(): void {
-    
-
-    this.journeyService.fetchJourneys().subscribe((res) => {
-      this.journeys.push(...res);
+    this.journeyService.fetchJourneys().subscribe((data) => {
+      this.journeys = data;
+      console.log(data);
 
       this.filteredJourneys = this.journeys;
       setTimeout(() => {
         this.isLoading = false;
-      },500)
-      
+      }, 500);
     });
   }
 
@@ -42,11 +40,5 @@ export class BlogsListComponent implements OnInit {
       journey.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     form.reset();
-  }
-
-  deleteData() {
-    this.journeyService.deleteJourneys().subscribe(() => {
-      this.journeys = [];
-    });
   }
 }

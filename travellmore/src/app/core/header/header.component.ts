@@ -1,24 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-import { JourneyService } from 'src/app/shared/services/journey.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, map } from 'rxjs';
+
+import { ProfileService } from 'src/app/shared/services/profile.service';
+import { UserService } from 'src/app/shared/services/user.service';
+import { User } from 'src/app/user/user-type/authUser';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
-  isLoggedIn: boolean = true;
-  constructor(private journeyService:JourneyService) {}
-  onSwitch() {
-    this.isLoggedIn = !this.isLoggedIn;
+export class HeaderComponent implements OnInit, OnDestroy {
+  isAuthenticated = false;
+  constructor(
+    private auth: AngularFireAuth,
+
+    private userService: UserService,
+    private profileService: ProfileService
+  ) {}
+  user?: User;
+  id?: string;
+  currentUser?: string | null;
+
+  ngOnInit(): void {
+    this.auth.authState.subscribe((user) => {
+      this.isAuthenticated = !user ? false : true;
+    });
+
+    this.profileService.getUsers().subscribe((data) => {
+      for (let item of data) {
+        this.getCurrentUserUid().subscribe((res) => {
+          this.currentUser = res;
+
+          if (item.userid === this.currentUser) {
+            debugger;
+            this.id = item.id;
+          }
+        });
+      }
+    });
   }
 
-  // populateData() {
-  //   this.apiService.storeJourneys()
-  // }
-
-  onFetchdata(){
-    this.journeyService.fetchJourneys()
+  loggingOut() {
+    this.userService.logout();
   }
+
+  getCurrentUserUid(): Observable<string | null> {
+    return this.auth.authState.pipe(map((user) => (user ? user.uid : null)));
+  }
+
+  ngOnDestroy(): void {}
 }
