@@ -24,32 +24,40 @@ export class UserService {
     private afauth: AngularFireAuth,
     private http: HttpClient,
     private router: Router,
-    private profileService:ProfileService
+    private profileService: ProfileService
   ) {}
 
-  handleError(err: HttpErrorResponse) {
-    let errorMessage = 'An unknown error occurs!';
-    if (!err.error || !err.error.error.message) {
-      return throwError(() => {
-        return new Error(errorMessage);
-      });
-    }
-    switch (err.error.error.message) {
-      case 'EMAIL_EXISTS':
-        errorMessage = 'This email exists already!';
+  handleError(error: any): any {
+    console.error('An error occurred:', error);
+
+    let errorMessage: string;
+
+    switch (error.code) {
+      case 'auth/email-already-in-use':
+        errorMessage = 'Email is already in use.';
         break;
-      case 'INVALID_LOGIN_CREDENTIALS':
-        errorMessage = 'Password or email is incorrect!';
+      case 'auth/invalid-email':
+        errorMessage = 'Invalid email.';
         break;
+      case 'auth/operation-not-allowed':
+        errorMessage = 'Operation not allowed.';
+        break;
+      case 'auth/weak-password':
+        errorMessage =
+          'Weak password. Password should be at least 6 characters.';
+        break;
+      case 'auth/invalid-credential':
+        errorMessage = 'Email or password does not exist!';
+        break;
+      default:
+        errorMessage = 'An error occurred during authentication.';
     }
 
-    return throwError(() => {
-      return new Error(errorMessage);
-    });
+    return new Error(errorMessage);
   }
 
   register(email: string, password: string) {
-    return this.afauth.createUserWithEmailAndPassword(email, password)
+    return this.afauth.createUserWithEmailAndPassword(email, password);
   }
 
   login(email: string, password: string) {

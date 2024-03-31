@@ -8,13 +8,18 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
- errorFound:any = null
- isLoading = false
-  constructor(private userService:UserService){}
+  errorFound: any = null;
+  isLoading = false;
+  constructor(private userService: UserService) {}
   login(form: NgForm) {
-    
     const { email, password } = form.value;
-    this.isLoading= true
-    this.userService.login(email,password)
+    // this.isLoading= true
+    this.userService
+      .login(email, password)
+      .then(() => {})
+      .catch((err) => {
+        this.errorFound = this.userService.handleError(err);
+        
+      });
   }
 }

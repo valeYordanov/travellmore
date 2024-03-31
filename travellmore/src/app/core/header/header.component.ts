@@ -36,7 +36,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.currentUser = res;
 
           if (item.userid === this.currentUser) {
-            debugger;
             this.id = item.id;
           }
         });

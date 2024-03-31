@@ -12,25 +12,29 @@ import { User } from '../user-type/authUser';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-
   errorFound: any = null;
-  
-  
-  constructor(private userService: UserService,private profileService:ProfileService) {}
-  signUp(form:NgForm){
-    
-    console.log(form.value);
-    
-    const {email,username,password,country,tel} = form.value
-    
-    this.userService.register(email,password).then(data => {
-       const uid = data.user?.uid
-       if(uid){
-        this.profileService.storeUsers(email,username,country,tel,uid).subscribe()
-       }
-       
-    })
 
-    
+  constructor(
+    private userService: UserService,
+    private profileService: ProfileService
+  ) {}
+  signUp(form: NgForm) {
+    console.log(form.value);
+
+    const { email, username, password, country, tel } = form.value;
+
+    this.userService
+      .register(email, password)
+      .then((data) => {
+        const uid = data.user?.uid;
+        if (uid) {
+          this.profileService
+            .storeUsers(email, username, country, tel, uid)
+            .subscribe();
+        }
+      })
+      .catch((error) => {
+        this.errorFound = this.userService.handleError(error);
+      });
   }
 }
