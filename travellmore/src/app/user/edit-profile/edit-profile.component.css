@@ -2,4 +2,34 @@ form{
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 2em;
 }
+
+.profile-picture img{
+    width: 70px;
+    margin-bottom: 1em;
+}
+input{
+    margin-bottom: 1em;
+}
+.btns{
+    box-decoration-break: clone;
+    margin-top: 1em;
+    display: flex;
+    gap: 1em;
+}
+
+.cancel-button,.save-button{
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.cancel-button:hover,.save-button:hover{
+    color: white;
+    background-color: rgb(208, 119, 101);
+}
+
+

@@ -5,6 +5,7 @@ import { ProfileService } from 'src/app/shared/services/profile.service';
 
 import { UserService } from 'src/app/shared/services/user.service';
 import { User } from '../user-type/authUser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,9 +17,13 @@ export class RegisterComponent {
 
   constructor(
     private userService: UserService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private router:Router
   ) {}
   signUp(form: NgForm) {
+    if(form.invalid){
+      return
+    }
     console.log(form.value);
 
     const { email, username, password, country, tel } = form.value;
@@ -32,6 +37,7 @@ export class RegisterComponent {
             .storeUsers(email, username, country, tel, uid)
             .subscribe();
         }
+        this.router.navigate(['/blogs'])
       })
       .catch((error) => {
         this.errorFound = this.userService.handleError(error);

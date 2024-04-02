@@ -64,6 +64,8 @@ export class UserService {
     return this.afauth.signInWithEmailAndPassword(email, password);
   }
 
+
+
   logout() {
     this.afauth.signOut().then(() => {
       this.router.navigate(['/login']);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Journey } from '../journey-type/Journey';
 
 import { JourneyService } from 'src/app/shared/services/journey.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-home-blogs',
@@ -9,16 +10,18 @@ import { JourneyService } from 'src/app/shared/services/journey.service';
   styleUrls: ['./home-blogs.component.css'],
 })
 export class HomeBlogsComponent implements OnInit {
-  constructor(private journeyService:JourneyService) {}
+  constructor(
+    private journeyService: JourneyService,
+    private auth: AngularFireAuth
+  ) {}
   journeys: Journey[] = [];
 
   ngOnInit(): void {
-    this.journeyService.fetchJourneys().subscribe(res => {
+    
+    this.journeyService.fetchJourneysByDate().subscribe(res => {
       this.journeys = res
+      console.log(this.journeys);
       
     })
-
-    
   }
-
 }

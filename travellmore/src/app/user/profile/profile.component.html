@@ -1,22 +1,28 @@
 <div class="container">
-  <div class="card">
+    <div *ngIf="isLoading" style="text-align: center; margin-top: 2em;">
+        <app-loading-spinner ></app-loading-spinner>
+      </div>
+  <div class="card" *ngIf="!isLoading">
+    <h1>User Details</h1>
     <div class="profile-picture">
       <img src="/../../../assets/images/profile-picture.png" alt="" />
     </div>
     <div class="username">
-      <p>Username: {{user?.username}} </p>
+      <p><span>Username:</span> {{ user?.username }}</p>
     </div>
     <div class="email">
-      <p>Email: {{user?.email}}</p>
+      <p><span>Email:</span> {{ user?.email }}</p>
     </div>
     <div class="tel">
-      <p>Phone number: {{user?.tel}}</p>
+      <p><span>Phone number:</span> {{ user?.tel }}</p>
     </div>
     <div class="country">
-      <p>Country: {{user?.country}}</p>
+      <p><span>Country:</span> {{ user?.country }}</p>
     </div>
-    <div class="button-edit">
-      <a routerLink="/profile/{{id}}/edit">Edit</a>
+    <div class="count">
+      <p><span>Blogs created:</span> {{ countOfJourneys }} blogs.</p>
     </div>
+
+    <a routerLink="/profile/{{ id }}/edit">Edit</a>
   </div>
 </div>

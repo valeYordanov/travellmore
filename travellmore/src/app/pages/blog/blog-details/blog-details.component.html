@@ -6,21 +6,26 @@
       <img [src]="journey?.img" alt="" />
     </div>
 
-    <div class="desc">
-        <p>{{journey?.desc}}</p>
-    </div>
-
     <div class="author-details">
       <p>Author: {{journey?.author}}</p>
       <p><i class="fa fa-calendar"></i>{{journey?.date}}</p>
     </div>
 
+    <h2 >About the place</h2>
+
+    <div class="desc">
+        <p>{{journey?.desc}}</p>
+    </div>
+
+    
+     <h2 class="third-title">What to expect?</h2>
 
     <div class="content">
       <p>{{journey?.content}}</p>
     </div>
 
-    <button *ngIf="isOwner(journey!.ownerId)" (click)="deletePost()">Delete</button>
-    <button *ngIf="isOwner(journey!.ownerId)" routerLink="/blogs/{{id}}/edit">Edit</button>
+    <button *ngIf="isOwner(journey!.ownerId)" (click)="deletePost()" class="btn delete-btn"><a>Delete</a></button>
+    <button *ngIf="isOwner(journey!.ownerId)" routerLink="/blogs/{{id}}/edit" class="btn edit-btn"><a >Edit</a></button>
   </div>
+  <app-blog-comments></app-blog-comments>
 </div>

@@ -11,6 +11,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
+import { ReviewsComponent } from './pages/reviews/reviews.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
 
     component: EditProfileComponent,
   },
+  {
+    path: 'reviews',
+    component : ReviewsComponent
+  }
 ];
 
 @NgModule({

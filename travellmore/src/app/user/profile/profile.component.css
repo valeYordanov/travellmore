@@ -1,11 +1,48 @@
 .card{
+    
     margin-top: 2em;
     padding-top: 1em;
     display: flex;
+    
     align-items: center;
+}
+h1{
+    padding-bottom: 1em;
+    text-decoration: underline;
+}
+
+.username{
+    margin-top: 1em;
+}
+
+.profile-picture img{
+    width: 70px;
 }
 
 .container{
     border: none;
+}
+span{
+    color: rgb(223, 166, 166);
+}
+
+a{
+    font-size: 18px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 0.5em 1em;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    margin: 2em 0;
+    transition: 0.3s;
+
+
+}
+a:hover{
+    color: white;
+    background-color: rgb(225, 164, 164);
 }
 

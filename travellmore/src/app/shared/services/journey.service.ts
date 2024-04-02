@@ -56,11 +56,28 @@ export class JourneyService {
             journeyArray.push({ ...res[key], id: key });
           }
 
-          console.log(journeyArray);
+          
 
           return journeyArray;
         })
       );
+  }
+
+  fetchJourneysByDate(){
+    return this.http.get<Journey[]>('https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json?orderBy="date"&limitToLast=3').pipe(
+      map((res) => {
+        const journeyArray: Journey[] = [];
+        for (let key in res) {
+          
+          journeyArray.push({ ...res[key] ,id:key });
+        }
+        journeyArray.reverse()
+
+        
+
+        return journeyArray;
+      })
+    );
   }
 
   getJourneysById(id: string | undefined): Observable<Journey> {

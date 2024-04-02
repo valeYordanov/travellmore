@@ -1,21 +1,20 @@
 <div class="container">
-<form action="" #form="ngForm" (ngSubmit)="updateProfile(form)">
-  <div class="profile-picture">
-    <img src="/../../../assets/images/profile-picture.png" alt="" />
-  </div>
-  <label for="username">Username: </label>
-  <input type="text" name="username" id="username" ngModel required="" />
+  <form action="" #form="ngForm" (ngSubmit)="updateProfile(form)">
+    <div class="profile-picture">
+      <img src="/../../../assets/images/profile-picture.png" alt="" />
+    </div>
+    <label for="username">Username: </label>
+    <input type="text" name="username" id="username" ngModel required="" />
 
-  <label for="email">Email: </label>
-  <input type="text" name="email" id="email" ngModel  required=""/>
+    <label for="tel">Phone number: </label>
+    <input type="text" name="tel" id="tel" ngModel required="" />
 
-  <label for="tel">Phone number: </label>
-  <input type="text" name="tel" id="tel" ngModel required="" />
+    <label for="country">Country: </label>
+    <input type="text" name="country" id="country" ngModel required="" />
 
-  <label for="country">Country: </label>
-  <input type="text" name="country" id="country" ngModel  required=""/>
-
-  <button class="cancel-button">Cancel</button>
-  <button class="save-button">Save</button>
-</form>
+    <div class="btns">
+      <button class="cancel-button" (click)="goBack()">Cancel</button>
+      <button class="save-button">Save</button>
+    </div>
+  </form>
 </div>

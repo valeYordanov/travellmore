@@ -13,14 +13,12 @@ import { NgForm } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
   id?: string;
-  
+  countOfJourneys?: number;
   user?: User;
   currentUser!: string | null;
+  isLoading:boolean = true
 
-  constructor(
-    private profileService: ProfileService,
-    
-  ) {}
+  constructor(private profileService: ProfileService) {}
   ngOnInit(): void {
     this.profileService.getUsers().subscribe((data) => {
       for (let item of data) {
@@ -33,7 +31,19 @@ export class ProfileComponent implements OnInit {
             });
           }
         });
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500);
       }
+    });
+
+    this.profileService.getCurrentUserUid().subscribe((res) => {
+      this.currentUser = res;
+      this.profileService
+        .getUserJourneysCount(this.currentUser)
+        .subscribe((res) => {
+          this.countOfJourneys = Object.keys(res).length;
+        });
     });
   }
 }

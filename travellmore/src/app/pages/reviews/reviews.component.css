@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+      
+        *,
+        ::after,
+        ::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Open Sans", sans-serif;
+            background: #f1eed4;
+            color: hsl(209, 61%, 16%);
+            line-height: 1.5;
+            font-size: 0.875rem;
+        }
+        h2,
+        h4 {
+            letter-spacing: 0.2rem;
+            text-transform: capitalize;
+            line-height: 1.25;
+            margin-bottom: 0.75rem;
+            font-family: "Roboto", sans-serif;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        h4 {
+            font-size: 0.875rem;
+        }
+        p {
+            margin-bottom: 1.25rem;
+            color: gray;
+        }
+        main {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+        .title-section {
+            text-align: center;
+            align-items: center;
+            margin-top: 0.1rem;
+            margin-bottom: 2.5rem;
+            padding-top: 2em;
+        }
+       
+        .underline {
+            height: 0.25rem;
+            width: 8rem;
+            background: #fc835b;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .review-container {
+            width: 80vw;
+            max-width: 600px;
+            align-content: center;
+            padding-left: 3em;
+        }
+        .custom-review {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s linear;
+            text-align: center;
+            align-items: center;
+        }
+        .custom-review:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .review-img-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto;
+            margin-bottom: 1.5rem;
+        }
+        #person-img {
+            width: 100%;
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            position: relative;
+        }
+        .review-img-container::after {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f10e";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            border-radius: 50%;
+            transform: translateY(25%);
+            background: #fc995b;
+            color: white;
+        }
+        .review-img-container::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: #fcae5b;
+            position: absolute;
+            top: -0.25rem;
+            right: -0.5rem;
+            border-radius: 50%;
+        }
+        #review-author {
+            margin-bottom: 0.25rem;
+        }
+        #review-job {
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            color: gray;
+            font-size: 0.85rem;
+        }
+        #review-info {
+            margin-bottom: 0.75rem;
+        }
+        .prev-review-btn,
+        .next-review-btn {
+            color: #a7e419;
+            font-size: 1.25rem;
+            background: transparent;
+            border-color: transparent;
+            margin: 0 0.5rem;
+            transition: color 0.3s linear;
+            cursor: pointer;
+        }
+        .prev-review-btn:hover,
+        .next-review-btn:hover {
+            color: black;
+        }
+        .random-review-btn {
+            margin-top: 0.5rem;
+            background: #fc9b5b;
+            color: black;
+            padding: 0.25rem 0.5rem;
+            text-transform: capitalize;
+            border-radius: 5px;
+            transition: background 0.3s linear, color 0.3s linear;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+        .random-review-btn:hover {
+            background: white;
+            color: black;
+        }

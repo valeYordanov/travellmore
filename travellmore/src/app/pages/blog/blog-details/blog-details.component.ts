@@ -4,6 +4,7 @@ import { JourneyService } from 'src/app/shared/services/journey.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { CommentService } from 'src/app/shared/services/comments.service';
 
 @Component({
   selector: 'app-blog-details',
@@ -21,7 +22,8 @@ export class BlogDetailsComponent implements OnInit {
     private journeyService: JourneyService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private auth: AngularFireAuth
+    private auth: AngularFireAuth,
+    
   ) {}
 
   ngOnInit(): void {

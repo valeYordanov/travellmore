@@ -5,6 +5,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/user/user-type/authUser';
 import { map } from 'rxjs';
+import { Journey } from 'src/app/pages/blog/journey-type/Journey';
 
 @Injectable({ providedIn: 'root' })
 export class ProfileService {
@@ -64,5 +65,8 @@ export class ProfileService {
     return this.http.patch<User>(
       `https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/users/${id}.json`,userData
     );
+  }
+  getUserJourneysCount(userId: string | null): Observable<number> {
+    return this.http.get<number>(`https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json?orderBy="ownerId"&equalTo="${userId}"`)
   }
 }

@@ -1,12 +1,8 @@
-<!-- <div *ngIf="isLoading" style="text-align: center; margin-top: 2em;">
-  <app-loading-spinner></app-loading-spinner>
-</div> -->
-
 <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" *ngIf="!isLoading">
   <div class="container">
     <h1>Login</h1>
     <div class="alert alert-danger" *ngIf="errorFound">
-      <p>{{errorFound}}</p>
+      <p>{{ errorFound }}</p>
     </div>
     <input
       type="text"

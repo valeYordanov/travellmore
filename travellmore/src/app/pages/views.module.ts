@@ -12,10 +12,13 @@ import { BlogDetailsComponent } from './blog/blog-details/blog-details.component
 import { RouterModule } from '@angular/router';
 import { BlogEditComponent } from './blog/blog-edit/blog-edit.component';
 import { SharedModule } from '../shared/shared.module';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { AddReviewComponent } from './add-review/add-review.component';
+import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
 
 @NgModule({
-  declarations: [BlogsListComponent, HomeBlogsComponent,AddJourneyComponent, BlogDetailsComponent, BlogEditComponent],
+  declarations: [BlogsListComponent, HomeBlogsComponent,AddJourneyComponent, BlogDetailsComponent, BlogEditComponent, ReviewsComponent, AddReviewComponent, BlogCommentsComponent],
   imports: [CommonModule, HttpClientModule, FormsModule ,HttpClientModule,RouterModule,SharedModule],
-  exports: [BlogsListComponent,HomeBlogsComponent,AddJourneyComponent,BlogDetailsComponent,BlogsListComponent],
+  exports: [BlogsListComponent,HomeBlogsComponent,AddJourneyComponent,BlogDetailsComponent,BlogsListComponent,BlogCommentsComponent],
 })
 export class ViewsModule {}

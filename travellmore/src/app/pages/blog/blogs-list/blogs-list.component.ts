@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./blogs-list.component.css'],
 })
 export class BlogsListComponent implements OnInit {
+  notFindingTitle: boolean = false;
   isLoading = true;
   journeys: Journey[] = [];
   filteredJourneys: Journey[] = [];
@@ -18,7 +19,6 @@ export class BlogsListComponent implements OnInit {
   ngOnInit(): void {
     this.journeyService.fetchJourneys().subscribe((data) => {
       this.journeys = data;
-      console.log(data);
 
       this.filteredJourneys = this.journeys;
       setTimeout(() => {
@@ -35,10 +35,13 @@ export class BlogsListComponent implements OnInit {
 
       return;
     }
-
+    this.notFindingTitle = false;
     this.filteredJourneys = this.journeys.filter((journey) =>
       journey.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    form.reset();
+
+    if (this.filteredJourneys.length === 0) {
+      this.notFindingTitle = true;
+    } 
   }
 }

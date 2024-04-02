@@ -17,6 +17,9 @@
  
   <div class="container">
   <article class="site-article" *ngIf="!isLoading">
+    <div class="not-found-blog" *ngIf="notFindingTitle">
+      <p>We could not found your blog!</p>
+    </div>
     <div class="blog-card" *ngFor="let journey of filteredJourneys" >
       <div class="card-img">
         <img [src]="journey.img" />

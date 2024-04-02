@@ -31,7 +31,7 @@ export class EditProfileComponent implements OnInit {
       this.editedUser = res;
       this.updateEditForm?.setValue({
         username: this.editedUser.username,
-        email: this.editedUser.email,
+        
         tel: this.editedUser.tel,
         country: this.editedUser.country,
       });
@@ -53,5 +53,8 @@ export class EditProfileComponent implements OnInit {
     this.profileService.updateUserById(this.id,this.profileDetails).subscribe(() => {
       this.router.navigate([`/profile/${this.id}`]);
     });
+  }
+  goBack(){
+    this.router.navigate([`/profile/${this.id}`])
   }
 }

@@ -3,9 +3,19 @@
     <div class="form">
       <h1>Add your trip</h1>
 
-      <form #postForm="ngForm" class="add-form" (ngSubmit)="createPost(postForm.value)">
+      <form
+        #postForm="ngForm"
+        class="add-form"
+        (ngSubmit)="createPost(postForm)"
+        
+      >
+      
         <label for="title">Title</label>
-        <input type="text" placeholder="Add title" name="title" ngModel />
+        <input type="text" placeholder="Add title" name="title"  ngModel #inputTitle="ngModel" required >
+        <ng-container *ngIf="inputTitle.touched">
+          <p class="error"  *ngIf="inputTitle.errors?.['required']">
+          Title is required!</p>
+        </ng-container> 
         <label for="description">Description</label>
         <textarea
           name="desc"
@@ -14,13 +24,52 @@
           rows="3"
           placeholder="Add description here..."
           ngModel
-        ></textarea>
+          #inputDesc="ngModel"
+          required
+        ></textarea> <ng-container *ngIf="inputDesc.touched">
+          <p class="error" style="color: red;" *ngIf="inputDesc.errors?.['required']">
+          Description is required!</p>
+        </ng-container>
+       
         <label for="author">Author</label>
-        <input type="text" placeholder="Author" name="author" ngModel />
+        <input
+          type="text"
+          placeholder="Author"
+          name="author"
+          required
+          ngModel
+          #inputAuthor="ngModel"
+        />
+        <ng-container *ngIf="inputAuthor.touched">
+          <p class="error" style="color: red;" *ngIf="inputAuthor.errors?.['required']">
+          Author is required!</p>
+        </ng-container>
         <label for="date">Date</label>
-        <input type="date" placeholder="DD/MM/YY" name="date" ngModel/>
+        <input
+          type="date"
+          placeholder="DD/MM/YY"
+          name="date"
+          required
+          ngModel
+          #inputDate="ngModel"
+        />
+        <ng-container *ngIf="inputDate.touched">
+          <p class="error" style="color: red;" *ngIf="inputDate.errors?.['required']">
+          Date is required!</p>
+        </ng-container>
         <label for="image">Add picture</label>
-        <input type="text" placeholder="Add image URL" name="img" ngModel />
+        <input
+          type="text"
+          placeholder="Add image URL"
+          name="img"
+          required
+          ngModel
+          #inputImg="ngModel"
+        />
+        <ng-container *ngIf="inputImg.touched">
+          <p class="error" style="color: red;" *ngIf="inputImg.errors?.['required']">
+          Image is required!</p>
+        </ng-container>
         <label for="content">Add content</label>
         <textarea
           name="content"
@@ -29,7 +78,13 @@
           rows="4"
           placeholder="Add content here..."
           ngModel
+          required
+          #inputContent="ngModel"
         ></textarea>
+        <ng-container *ngIf="inputContent.touched">
+          <p class="error" style="color: red;" *ngIf="inputContent.errors?.['required']">
+          Content is required!</p>
+        </ng-container>
         <button>Add to our collection</button>
       </form>
     </div>

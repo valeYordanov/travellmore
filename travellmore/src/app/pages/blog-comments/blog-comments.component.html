@@ -1,0 +1,27 @@
+<h1>Comment Section</h1>
+<div class="comment" *ngFor="let comment of comments">
+  <div class="profile-details" >
+    <div class="profile-img"  >
+      <img src="/../../../assets/images/Sample_User_Icon.png" alt="" />
+    </div>
+
+    <div class="username">
+      <p>{{comment.username}}</p>
+    </div>
+  </div>
+
+  <div class="comment-msg">
+    <p>
+      {{comment.msg}}
+    </p>
+  </div>
+</div>
+
+<div class="comment-form">
+    <form #form="ngForm" (ngSubmit)="createComment(form)">
+        <h2>Leave a comment</h2>
+        <label for="comment">Comment</label>
+        <textarea name="msg" id="msg" cols="60" rows="4" required ngModel></textarea>
+        <button><a>Post Comment</a></button>
+    </form>
+</div>
