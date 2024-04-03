@@ -15,7 +15,7 @@ export class BlogEditComponent implements OnInit {
 
   @ViewChild('postForm', { static: false }) updateForm?: NgForm;
   id!: string | undefined;
-  
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -40,9 +40,23 @@ export class BlogEditComponent implements OnInit {
     this.router.navigate([`/blogs/${this.id}`]);
   }
 
-  updateJourney(postForm: Journey) {
+  postForm: Journey = {
+    title: '',
+    desc: '',
+    author: '',
+    date: '',
+    img: '',
+    content: '',
+  };
+
+  updateJourney(form:NgForm) {
+    if(form.invalid){
+      return
+    }
+
+    this.postForm = form.value as Journey
     this.id = this.activatedRoute.snapshot.params['id'];
-    this.journeyService.updateJourneyById(this.id, postForm).subscribe(() => {
+    this.journeyService.updateJourneyById(this.id, this.postForm).subscribe(() => {
       this.router.navigate([`/blogs/${this.id}`]);
     });
   }
