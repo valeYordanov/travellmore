@@ -10,22 +10,21 @@ import { Subscription } from 'rxjs';
   templateUrl: './home-blogs.component.html',
   styleUrls: ['./home-blogs.component.css'],
 })
-export class HomeBlogsComponent implements OnInit,OnDestroy {
+export class HomeBlogsComponent implements OnInit{
   constructor(
     private journeyService: JourneyService,
     private auth: AngularFireAuth
   ) {}
   journeys: Journey[] = [];
-  sub?:Subscription
+  
   ngOnInit(): void {
     
-    this.sub=this.journeyService.fetchJourneysByDate().subscribe(res => {
+    this.journeyService.fetchJourneysByDate().subscribe(res => {
       this.journeys = res
       
       
     })
   }
-  ngOnDestroy(): void {
-    this.sub?.unsubscribe()
-  }
+
+  
 }

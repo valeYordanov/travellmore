@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
+
 import { Observable } from 'rxjs';
 import { User } from 'src/app/types/user-type/authUser';
 import { map } from 'rxjs';
-import { Journey } from 'src/app/types/journey-type/Journey';
+
 
 @Injectable({ providedIn: 'root' })
 export class ProfileService {
@@ -34,9 +34,7 @@ export class ProfileService {
     );
   }
 
-  getCurrentUserUid(): Observable<string | null> {
-    return this.auth.authState.pipe(map((user) => (user ? user.uid : null)));
-  }
+  
 
   getUsers() {
     return this.http

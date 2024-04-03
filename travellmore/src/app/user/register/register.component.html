@@ -1,6 +1,4 @@
-
-
-<form #f="ngForm" (ngSubmit)="signUp(f)" >
+<form #f="ngForm" (ngSubmit)="signUp(f)">
   <div class="container">
     <div class="register-img">
       <img src="/../../../assets/images/register2.jpg" alt="" />
@@ -8,44 +6,70 @@
     <div class="inputs">
       <h1>Register</h1>
       <div class="alert alert-danger" *ngIf="errorFound">
-        <p>{{errorFound}}</p>
+        <p>{{ errorFound }}</p>
       </div>
-      
-      <input type="text" placeholder="Enter Email..." name="email" required ngModel pattern="[A-Za-z0-9]+@abv\.bg|[A-Za-z0-9]+@gmail\.com" #inputEmail="ngModel" />
+
+      <input
+        type="text"
+        placeholder="Enter Email..."
+        name="email"
+        required
+        ngModel
+        pattern="[A-Za-z0-9]+@abv\.bg|[A-Za-z0-9]+@gmail\.com"
+        #inputEmail="ngModel"
+      />
       <ng-container *ngIf="inputEmail.touched">
-        <p class="error" style="color: red; text-align: left;"  *ngIf="inputEmail.errors?.['required']">
-        Email is required!</p>
+        <p
+          class="error"
+          style="color: red; text-align: left"
+          *ngIf="inputEmail.errors?.['required']"
+        >
+          Email is required!
+        </p>
         <ng-container *ngIf="inputEmail.touched">
-          <p class="error" style="color: red; text-align: left;"  *ngIf="inputEmail.errors?.['pattern']">
-          Email is not valid!</p>
+          <p
+            class="error"
+            style="color: red; text-align: left"
+            *ngIf="inputEmail.errors?.['pattern']"
+          >
+            Email is not valid!
+          </p>
         </ng-container>
       </ng-container>
       <input
-      type="text"
-      placeholder="Enter username..."
-      name="username"
-      required
-
-      ngModel
-      #inputUsername="ngModel"
-    />
-    <ng-container *ngIf="inputUsername.touched">
-      <p class="error" style="color: red;" *ngIf="inputUsername.errors?.['required']">
-      Username is required!</p>
-    </ng-container>
+        type="text"
+        placeholder="Enter username..."
+        name="username"
+        required
+        ngModel
+        #inputUsername="ngModel"
+      />
+      <ng-container *ngIf="inputUsername.touched">
+        <p
+          class="error"
+          style="color: red"
+          *ngIf="inputUsername.errors?.['required']"
+        >
+          Username is required!
+        </p>
+      </ng-container>
 
       <input
         type="password"
         placeholder="Enter Password..."
         name="password"
         required
-
         ngModel
         #inputPassword="ngModel"
       />
       <ng-container *ngIf="inputPassword.touched">
-        <p class="error" style="color: red; text-align: left;"  *ngIf="inputPassword.errors?.['required']">
-        Password is required!</p>
+        <p
+          class="error"
+          style="color: red; text-align: left"
+          *ngIf="inputPassword.errors?.['required']"
+        >
+          Password is required!
+        </p>
       </ng-container>
 
       <input
@@ -53,28 +77,36 @@
         placeholder="Enter country..."
         name="country"
         required
-
         ngModel
         #inputCountry="ngModel"
       />
       <ng-container *ngIf="inputCountry.touched">
-        <p class="error" style="color: red; text-align: left;"  *ngIf="inputCountry.errors?.['required']">
-        Country is required!</p>
+        <p
+          class="error"
+          style="color: red; text-align: left"
+          *ngIf="inputCountry.errors?.['required']"
+        >
+          Country is required!
+        </p>
       </ng-container>
-      
-      <input
-      type="text"
-      placeholder="Enter number..."
-      name="tel"
-      required
 
-      ngModel
-      #inputNumber="ngModel"
-    />
-    <ng-container *ngIf="inputNumber.touched">
-      <p class="error" style="color: red; text-align: left;"  *ngIf="inputNumber.errors?.['required']">
-      Number is required!</p>
-    </ng-container>
+      <input
+        type="text"
+        placeholder="Enter number..."
+        name="tel"
+        required
+        ngModel
+        #inputNumber="ngModel"
+      />
+      <ng-container *ngIf="inputNumber.touched">
+        <p
+          class="error"
+          style="color: red; text-align: left"
+          *ngIf="inputNumber.errors?.['required']"
+        >
+          Number is required!
+        </p>
+      </ng-container>
 
       <button>Register</button>
       <p>

@@ -7,13 +7,14 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Journey } from '../../types/journey-type/Journey';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-journey',
   templateUrl: './add-journey.component.html',
   styleUrls: ['./add-journey.component.css'],
 })
-export class AddJourneyComponent {
+export class AddJourneyComponent implements OnDestroy {
   constructor(
     private journeyService: JourneyService,
     private router: Router,
@@ -22,7 +23,7 @@ export class AddJourneyComponent {
     
   }
   userId?: any;
-
+  subscription?:Subscription
   postData: Journey = {
     title: '',
     desc: '',
@@ -42,7 +43,7 @@ export class AddJourneyComponent {
     })
 
     this.postData = f.value as Journey;
-    this.journeyService
+    this.subscription=this.journeyService
       .storeJourneys(
         this.postData.title,
         this.postData.desc,
@@ -55,5 +56,8 @@ export class AddJourneyComponent {
       .subscribe(() => {
         this.router.navigate(['/blogs']);
       });
+  }
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe()
   }
 }

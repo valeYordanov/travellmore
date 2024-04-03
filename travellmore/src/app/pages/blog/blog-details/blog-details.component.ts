@@ -5,7 +5,7 @@ import { JourneyService } from 'src/app/services/services/journey.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { CommentService } from 'src/app/services/services/comments.service';
-import { map } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { map } from 'rxjs';
   templateUrl: './blog-details.component.html',
   styleUrls: ['./blog-details.component.css'],
 })
-export class BlogDetailsComponent implements OnInit {
+export class BlogDetailsComponent implements OnInit , OnDestroy {
   journey?: Journey;
 
   @Input() id: string | undefined;
@@ -22,6 +22,7 @@ export class BlogDetailsComponent implements OnInit {
 
   likes: number[] = []
   data?:Journey
+  subscription = new Subscription()
   
 
   constructor(
@@ -32,21 +33,21 @@ export class BlogDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.auth.authState.subscribe((user) => {
+    this.subscription.add(this.auth.authState.subscribe((user) => {
       this.currentUser = user?.uid;
-    });
+    }));
     this.id = this.activatedRoute.snapshot.params['id'];
 
-    this.journeyService.getJourneysById(this.id).subscribe((res) => {
+    this.subscription.add(this.journeyService.getJourneysById(this.id).subscribe((res) => {
       this.journey = res;
-    });
+    }));
   }
 
   deletePost() {
     this.id = this.activatedRoute.snapshot.params['id'];
-    this.journeyService.deleteJourneyById(this.id).subscribe(() => {
+    this.subscription.add(this.journeyService.deleteJourneyById(this.id).subscribe(() => {
       this.router.navigate(['/blogs']);
-    });
+    }));
   }
 
   isOwner(ownerId: string | undefined): boolean {
@@ -54,6 +55,8 @@ export class BlogDetailsComponent implements OnInit {
     
   }
 
-  
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
   
 }

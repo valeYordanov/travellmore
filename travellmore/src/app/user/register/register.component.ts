@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+
 import { NgForm } from '@angular/forms';
 import { ProfileService } from 'src/app/services/services/profile.service';
 
 import { UserService } from 'src/app/services/services/user.service';
-import { User } from '../../types/user-type/authUser';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,13 +18,12 @@ export class RegisterComponent {
   constructor(
     private userService: UserService,
     private profileService: ProfileService,
-    private router:Router
+    private router: Router
   ) {}
   signUp(form: NgForm) {
-    if(form.invalid){
-      return
+    if (form.invalid) {
+      return;
     }
-    console.log(form.value);
 
     const { email, username, password, country, tel } = form.value;
 
@@ -37,7 +36,7 @@ export class RegisterComponent {
             .storeUsers(email, username, country, tel, uid)
             .subscribe();
         }
-        this.router.navigate(['/login'])
+        this.router.navigate(['/blogs']);
       })
       .catch((error) => {
         this.errorFound = this.userService.handleError(error);

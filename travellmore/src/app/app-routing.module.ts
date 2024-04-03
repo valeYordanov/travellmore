@@ -11,7 +11,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
-import { ReviewsComponent } from './pages/reviews/reviews.component';
+
 import { AuthActivate } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -20,6 +20,7 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: '/home',
   },
+  
   {
     path: 'home',
     component: HomeComponent,
@@ -29,6 +30,7 @@ const routes: Routes = [
     path: 'blogs',
     component: BlogsListComponent,
   },
+  
   {
     path: 'blogs/:id',
     component: BlogDetailsComponent, canActivate: [AuthActivate]
@@ -44,7 +46,7 @@ const routes: Routes = [
 
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginComponent, 
   },
   {
     path: 'register',
@@ -53,17 +55,21 @@ const routes: Routes = [
   {
     path: 'profile/:id',
 
-    component: ProfileComponent, 
+    component: ProfileComponent, canActivate : [AuthActivate]
   },
   {
     path: 'profile/:id/edit',
 
-    component: EditProfileComponent, 
+    component: EditProfileComponent, canActivate : [AuthActivate] 
   },
   {
-    path: 'reviews',
-    component : ReviewsComponent
-  }
+    path: '**', redirectTo: "/404"
+ },{
+   path: '404', component:PageNotFoundComponent
+ },
+  
+  
+ 
 ];
 
 @NgModule({

@@ -7,13 +7,13 @@ import { Observable, Subscription, map } from 'rxjs';
 import { Journey } from 'src/app/types/journey-type/Journey';
 
 @Injectable({ providedIn: 'root' })
-export class JourneyService implements OnDestroy {
-  subscription?:Subscription
+export class JourneyService  {
+  subscription?: Subscription;
   journeys: Journey[] = [];
   constructor(private http: HttpClient, private auth: AngularFireAuth) {
-    this.auth.authState.subscribe(res => {
-      this.uid = res?.uid
-    })
+    this.auth.authState.subscribe((res) => {
+      this.uid = res?.uid;
+    });
   }
   uid?: string;
   storeJourneys(
@@ -23,10 +23,8 @@ export class JourneyService implements OnDestroy {
     date: string,
     img: string,
     content: string,
-
     id?: string
   ) {
-    
     const postData: Journey = {
       title: title,
       desc: desc,
@@ -36,7 +34,6 @@ export class JourneyService implements OnDestroy {
       content: content,
       ownerId: this.uid,
       id: id,
-      
     };
 
     return this.http.post<Journey>(
@@ -46,7 +43,6 @@ export class JourneyService implements OnDestroy {
   }
 
   fetchJourneys() {
-    
     return this.http
       .get<Journey[]>(
         'https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json'
@@ -57,8 +53,7 @@ export class JourneyService implements OnDestroy {
           for (let key in res) {
             journeyArray.push({ ...res[key], id: key });
           }
-          console.log(journeyArray);
-          
+
           return journeyArray;
         })
       );
@@ -111,8 +106,4 @@ export class JourneyService implements OnDestroy {
   }
 
   
-ngOnDestroy(): void {
-  
-}
- 
 }

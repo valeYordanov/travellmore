@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../types/user-type/authUser';
 import { ProfileService } from 'src/app/services/services/profile.service';
 import { Subscription, tap } from 'rxjs';
+import { UserService } from 'src/app/services/services/user.service';
 
 
 @Component({
@@ -17,12 +18,12 @@ export class ProfileComponent implements OnInit {
   currentUser?: string | null;
   isLoading:boolean = true
 
-  subscription:Subscription[] = []
-  constructor(private profileService: ProfileService) {}
+  
+  constructor(private profileService: ProfileService,private userService:UserService) {}
   ngOnInit(): void {
-    this.profileService.getUsers().subscribe((data) => {
+    (this.profileService.getUsers().subscribe((data) => {
       for (let item of data) {
-        this.profileService.getCurrentUserUid().subscribe(res => {
+        this.userService.getCurrentUserUid().subscribe(res => {
           this.currentUser = res;
           if (item.userid === this.currentUser) {
             this.id = item.id;
@@ -35,9 +36,9 @@ export class ProfileComponent implements OnInit {
           this.isLoading = false;
         }, 500);
       }
-    });
+    }));
 
-    this.profileService.getCurrentUserUid().subscribe((res) => {
+    this.userService.getCurrentUserUid().subscribe((res) => {
       this.currentUser = res;
       this.profileService
         .getUserJourneysCount(this.currentUser)

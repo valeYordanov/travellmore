@@ -1,21 +1,10 @@
+.site-footer {
+  display: flex;
+  background-color: black;
+  flex-direction: row;
+  color: #fff;
 
-
-.site-footer{
-    display: flex;
-    background-color: black;
-    flex-direction: row;
-    color: #fff;
-    /* position: fixed; */
-    bottom: 0;
-    width: 100%;
-    padding-left: 31em;
-    /* bottom: 0;
-    color: #707070;
-    height: 2em;
-    left: 0;
-    position: fixed;
-    font-size: small;
-    width:100%;
-    z-index:9; */
-    
+  bottom: 0;
+  width: 100%;
+  padding-left: 31em;
 }
