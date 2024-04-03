@@ -1,10 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Journey } from '../journey-type/Journey';
-import { JourneyService } from 'src/app/shared/services/journey.service';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Journey } from '../../../types/journey-type/Journey';
+import { JourneyService } from 'src/app/services/services/journey.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { CommentService } from 'src/app/shared/services/comments.service';
+import { CommentService } from 'src/app/services/services/comments.service';
+import { map } from 'rxjs';
+
 
 @Component({
   selector: 'app-blog-details',
@@ -18,12 +20,15 @@ export class BlogDetailsComponent implements OnInit {
 
   currentUser?: string;
 
+  likes: number[] = []
+  data?:Journey
+  
+
   constructor(
     private journeyService: JourneyService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private auth: AngularFireAuth,
-    
+    private auth: AngularFireAuth
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +49,10 @@ export class BlogDetailsComponent implements OnInit {
     });
   }
 
-  isOwner(ownerId: string): boolean {
+  isOwner(ownerId: string | undefined): boolean {
     return this.currentUser === ownerId;
   }
+
+  
+  
 }

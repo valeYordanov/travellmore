@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { Observable, map } from 'rxjs';
 
-import { Journey } from 'src/app/pages/blog/journey-type/Journey';
+import { Journey } from 'src/app/types/journey-type/Journey';
 
 @Injectable({ providedIn: 'root' })
 export class JourneyService {
@@ -33,6 +33,7 @@ export class JourneyService {
       content: content,
       ownerId: this.uid,
       id: id,
+      
     };
 
     return this.http.post<Journey>(
@@ -56,28 +57,27 @@ export class JourneyService {
             journeyArray.push({ ...res[key], id: key });
           }
 
-          
-
           return journeyArray;
         })
       );
   }
 
-  fetchJourneysByDate(){
-    return this.http.get<Journey[]>('https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json?orderBy="date"&limitToLast=3').pipe(
-      map((res) => {
-        const journeyArray: Journey[] = [];
-        for (let key in res) {
-          
-          journeyArray.push({ ...res[key] ,id:key });
-        }
-        journeyArray.reverse()
+  fetchJourneysByDate() {
+    return this.http
+      .get<Journey[]>(
+        'https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json?orderBy="date"&limitToLast=3'
+      )
+      .pipe(
+        map((res) => {
+          const journeyArray: Journey[] = [];
+          for (let key in res) {
+            journeyArray.push({ ...res[key], id: key });
+          }
+          journeyArray.reverse();
 
-        
-
-        return journeyArray;
-      })
-    );
+          return journeyArray;
+        })
+      );
   }
 
   getJourneysById(id: string | undefined): Observable<Journey> {
@@ -107,4 +107,8 @@ export class JourneyService {
       postData
     );
   }
+
+  
+
+ 
 }

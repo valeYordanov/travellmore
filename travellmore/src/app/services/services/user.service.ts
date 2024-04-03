@@ -9,7 +9,7 @@ import {
   switchMap,
   throwError,
 } from 'rxjs';
-import { User } from 'src/app/user/user-type/authUser';
+import { User } from 'src/app/types/user-type/authUser';
 import { BehaviorSubject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';

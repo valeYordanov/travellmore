@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NgForm } from '@angular/forms';
-import { ProfileService } from 'src/app/shared/services/profile.service';
+import { ProfileService } from 'src/app/services/services/profile.service';
 
-import { UserService } from 'src/app/shared/services/user.service';
-import { User } from '../user-type/authUser';
+import { UserService } from 'src/app/services/services/user.service';
+import { User } from '../../types/user-type/authUser';
 import { Router } from '@angular/router';
 
 @Component({

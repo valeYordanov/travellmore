@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/user/user-type/authUser';
+import { User } from 'src/app/types/user-type/authUser';
 import { map } from 'rxjs';
-import { Journey } from 'src/app/pages/blog/journey-type/Journey';
+import { Journey } from 'src/app/types/journey-type/Journey';
 
 @Injectable({ providedIn: 'root' })
 export class ProfileService {

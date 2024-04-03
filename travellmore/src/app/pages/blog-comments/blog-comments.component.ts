@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { CommentService } from 'src/app/shared/services/comments.service';
-import { CommentInterface } from './comments-type/comment';
-import { ProfileService } from 'src/app/shared/services/profile.service';
+import { CommentService } from 'src/app/services/services/comments.service';
+import { CommentInterface } from '../../types/comments-type/comment';
+import { ProfileService } from 'src/app/services/services/profile.service';
 import { Observable, map } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { JourneyService } from 'src/app/shared/services/journey.service';
+import { JourneyService } from 'src/app/services/services/journey.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

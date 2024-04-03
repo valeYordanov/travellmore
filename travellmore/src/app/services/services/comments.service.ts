@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { User } from 'src/app/user/user-type/authUser';
+import { User } from 'src/app/types/user-type/authUser';
 import { map } from 'rxjs';
-import { CommentInterface } from 'src/app/pages/blog-comments/comments-type/comment';
+import { CommentInterface } from 'src/app/types/comments-type/comment';
 import { ProfileService } from './profile.service';
 
 @Injectable({ providedIn: 'root' })

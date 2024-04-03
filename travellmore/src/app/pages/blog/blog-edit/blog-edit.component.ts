@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Journey } from '../journey-type/Journey';
+import { Journey } from '../../../types/journey-type/Journey';
 import { NgForm } from '@angular/forms';
-import { JourneyService } from 'src/app/shared/services/journey.service';
+import { JourneyService } from 'src/app/services/services/journey.service';
 
 @Component({
   selector: 'app-blog-edit',

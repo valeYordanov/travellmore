@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
-import { JourneyService } from 'src/app/shared/services/journey.service';
+import { JourneyService } from 'src/app/services/services/journey.service';
 
 import { Router } from '@angular/router';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Journey } from '../blog/journey-type/Journey';
+import { Journey } from '../../types/journey-type/Journey';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -29,7 +29,8 @@ export class AddJourneyComponent {
     date: '',
     img: '',
     content: '',
-    ownerId:this.userId
+    ownerId:this.userId,
+    
   }
 
   createPost(f:NgForm) {
@@ -46,7 +47,9 @@ export class AddJourneyComponent {
         this.postData.date,
         this.postData.img,
         this.postData.content,
-        this.postData.ownerId
+        this.postData.ownerId,
+        
+
       )
       .subscribe(() => {
         this.router.navigate(['/blogs']);

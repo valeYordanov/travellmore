@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Journey } from '../journey-type/Journey';
-import { JourneyService } from 'src/app/shared/services/journey.service';
+import { Journey } from '../../../types/journey-type/Journey';
+import { JourneyService } from 'src/app/services/services/journey.service';
 import { NgForm } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-blogs-list',
@@ -14,7 +15,10 @@ export class BlogsListComponent implements OnInit {
   journeys: Journey[] = [];
   filteredJourneys: Journey[] = [];
 
-  constructor(private journeyService: JourneyService) {}
+  constructor(
+    private journeyService: JourneyService,
+    private auth: AngularFireAuth
+  ) {}
 
   ngOnInit(): void {
     this.journeyService.fetchJourneys().subscribe((data) => {
@@ -42,6 +46,6 @@ export class BlogsListComponent implements OnInit {
 
     if (this.filteredJourneys.length === 0) {
       this.notFindingTitle = true;
-    } 
+    }
   }
 }

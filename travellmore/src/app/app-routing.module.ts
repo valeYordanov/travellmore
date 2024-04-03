@@ -12,6 +12,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 import { ReviewsComponent } from './pages/reviews/reviews.component';
+import { AuthActivate } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -30,15 +31,15 @@ const routes: Routes = [
   },
   {
     path: 'blogs/:id',
-    component: BlogDetailsComponent,
+    component: BlogDetailsComponent, canActivate: [AuthActivate]
   },
   {
     path: 'blogs/:id/edit',
-    component: BlogEditComponent,
+    component: BlogEditComponent, canActivate : [AuthActivate]
   },
   {
     path: 'add-journey',
-    component: AddJourneyComponent,
+    component: AddJourneyComponent, canActivate : [AuthActivate]
   },
 
   {
@@ -52,12 +53,12 @@ const routes: Routes = [
   {
     path: 'profile/:id',
 
-    component: ProfileComponent,
+    component: ProfileComponent, canActivate:[AuthActivate]
   },
   {
     path: 'profile/:id/edit',
 
-    component: EditProfileComponent,
+    component: EditProfileComponent, canActivate: [AuthActivate]
   },
   {
     path: 'reviews',

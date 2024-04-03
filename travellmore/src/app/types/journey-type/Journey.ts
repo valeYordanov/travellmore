@@ -6,5 +6,6 @@ export interface Journey {
   img:string
   content: string;
   id?:string
-  ownerId:string 
+  ownerId?:string 
+  
 }

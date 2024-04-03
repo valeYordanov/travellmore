@@ -4,9 +4,9 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 
-import { ProfileService } from 'src/app/shared/services/profile.service';
-import { UserService } from 'src/app/shared/services/user.service';
-import { User } from 'src/app/user/user-type/authUser';
+import { ProfileService } from 'src/app/services/services/profile.service';
+import { UserService } from 'src/app/services/services/user.service';
+import { User } from 'src/app/types/user-type/authUser';
 
 @Component({
   selector: 'app-header',

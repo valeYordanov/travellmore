@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../user-type/authUser';
-import { ProfileService } from 'src/app/shared/services/profile.service';
+import { User } from '../../types/user-type/authUser';
+import { ProfileService } from 'src/app/services/services/profile.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable, map } from 'rxjs';
 import { NgForm } from '@angular/forms';

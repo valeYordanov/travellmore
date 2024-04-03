@@ -24,8 +24,9 @@
       <p>{{journey?.content}}</p>
     </div>
 
-    <button *ngIf="isOwner(journey!.ownerId)" (click)="deletePost()" class="btn delete-btn"><a>Delete</a></button>
-    <button *ngIf="isOwner(journey!.ownerId)" routerLink="/blogs/{{id}}/edit" class="btn edit-btn"><a >Edit</a></button>
+    <button *ngIf="isOwner(journey?.ownerId)" (click)="deletePost()" class="btn delete-btn"><a>Delete</a></button>
+    <button *ngIf="isOwner(journey?.ownerId)" routerLink="/blogs/{{id}}/edit" class="btn edit-btn"><a >Edit</a></button>
+    
   </div>
   <app-blog-comments></app-blog-comments>
 </div>
