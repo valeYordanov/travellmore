@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Journey } from '../../../types/journey-type/Journey';
+import { Journey } from 'src/app/types/journey-type/Journey';
 import { JourneyService } from 'src/app/services/services/journey.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -51,6 +51,7 @@ export class BlogDetailsComponent implements OnInit {
 
   isOwner(ownerId: string | undefined): boolean {
     return this.currentUser === ownerId;
+    
   }
 
   

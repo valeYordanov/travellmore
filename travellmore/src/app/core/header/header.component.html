@@ -12,6 +12,7 @@
       <li *ngIf="!isAuthenticated" >
         <a routerLink="/login">Signup</a>
       </li>
+      
       <li style="cursor: pointer;" *ngIf="isAuthenticated">
         <a  (click)="loggingOut()">Logout</a>
       </li>

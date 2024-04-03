@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+
 import { User } from '../../types/user-type/authUser';
 import { ProfileService } from 'src/app/services/services/profile.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Observable, map } from 'rxjs';
-import { NgForm } from '@angular/forms';
+import { Subscription, tap } from 'rxjs';
+
 
 @Component({
   selector: 'app-profile',
@@ -15,18 +14,19 @@ export class ProfileComponent implements OnInit {
   id?: string;
   countOfJourneys?: number;
   user?: User;
-  currentUser!: string | null;
+  currentUser?: string | null;
   isLoading:boolean = true
 
+  subscription:Subscription[] = []
   constructor(private profileService: ProfileService) {}
   ngOnInit(): void {
     this.profileService.getUsers().subscribe((data) => {
       for (let item of data) {
-        this.profileService.getCurrentUserUid().subscribe((res) => {
+        this.profileService.getCurrentUserUid().subscribe(res => {
           this.currentUser = res;
           if (item.userid === this.currentUser) {
             this.id = item.id;
-            this.profileService.getUserById(this.id).subscribe((userData) => {
+           this.profileService.getUserById(this.id).subscribe(userData => {
               this.user = userData;
             });
           }
@@ -46,4 +46,5 @@ export class ProfileComponent implements OnInit {
         });
     });
   }
+  
 }

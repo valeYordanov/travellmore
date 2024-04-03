@@ -7,8 +7,10 @@ import {
   
   HttpParams,
 } from '@angular/common/http';
-import { Observable, catchError, from, map, switchMap } from 'rxjs';
+import { Observable, catchError, from, map, mergeMap, switchMap } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Token } from '@angular/compiler';
+import { UserService } from '../services/services/user.service';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
@@ -17,27 +19,21 @@ export class AppInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return this.auth.authState.pipe(
-      switchMap((user) => {
-        if (user) {
-          return from(user.getIdToken()).pipe(
-            switchMap((token) => {
-              const authRequest = request.clone({
-                params: new HttpParams().set('auth', token),
-              });
-              
-
-              return next.handle(authRequest);
-            }),
-            catchError((error) => {
-              // Handle error retrieving token
-              console.error('Error retrieving token:', error);
-              return next.handle(request); // Proceed with original request
-            })
-          );
-        }
-        return next.handle(request); // Proceed with original request
-      })
-    );
+    return from(this.auth.currentUser.then(user => user?.getIdToken()).catch(err => {})).pipe(switchMap(token => {
+      if (token) {
+        
+        request = request.clone({
+          setHeaders: {
+             "auth" : token
+          }
+        
+        });
+        
+        
+        
+      }
+      return next.handle(request);
+    }));
   }
+  
 }

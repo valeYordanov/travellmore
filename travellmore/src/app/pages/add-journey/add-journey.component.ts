@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 import { JourneyService } from 'src/app/services/services/journey.service';
 
@@ -14,31 +14,34 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-journey.component.css'],
 })
 export class AddJourneyComponent {
-  constructor(private journeyService: JourneyService, private router: Router,private auth:AngularFireAuth) {
-    this.auth.authState.subscribe(user => {
-        this.userId = user!.uid
-    })
+  constructor(
+    private journeyService: JourneyService,
+    private router: Router,
+    private auth: AngularFireAuth
+  ) {
+    
   }
-  userId?: any
+  userId?: any;
 
-  
-  postData : Journey = {
+  postData: Journey = {
     title: '',
     desc: '',
     author: '',
     date: '',
     img: '',
     content: '',
-    ownerId:this.userId,
-    
-  }
+    ownerId: this.userId,
+  };
 
-  createPost(f:NgForm) {
-    if(f.invalid){
-      return
+  createPost(f: NgForm) {
+    if (f.invalid) {
+      return;
     }
+    this.auth.authState.subscribe(res => {
+      this.userId = res?.uid
+    })
 
-    this.postData = f.value as Journey
+    this.postData = f.value as Journey;
     this.journeyService
       .storeJourneys(
         this.postData.title,
@@ -47,9 +50,7 @@ export class AddJourneyComponent {
         this.postData.date,
         this.postData.img,
         this.postData.content,
-        this.postData.ownerId,
-        
-
+        this.postData.ownerId
       )
       .subscribe(() => {
         this.router.navigate(['/blogs']);

@@ -1,16 +1,21 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-import { Observable, map } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
 
 import { Journey } from 'src/app/types/journey-type/Journey';
 
 @Injectable({ providedIn: 'root' })
-export class JourneyService {
+export class JourneyService implements OnDestroy {
+  subscription?:Subscription
   journeys: Journey[] = [];
-  constructor(private http: HttpClient, private auth: AngularFireAuth) {}
-  uid!: string;
+  constructor(private http: HttpClient, private auth: AngularFireAuth) {
+    this.auth.authState.subscribe(res => {
+      this.uid = res?.uid
+    })
+  }
+  uid?: string;
   storeJourneys(
     title: string,
     desc: string,
@@ -21,9 +26,7 @@ export class JourneyService {
 
     id?: string
   ) {
-    this.auth.onAuthStateChanged((user) => {
-      this.uid = user!.uid;
-    });
+    
     const postData: Journey = {
       title: title,
       desc: desc,
@@ -43,9 +46,7 @@ export class JourneyService {
   }
 
   fetchJourneys() {
-    this.auth.onAuthStateChanged((user) => {
-      this.uid = user!.uid;
-    });
+    
     return this.http
       .get<Journey[]>(
         'https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json'
@@ -56,7 +57,8 @@ export class JourneyService {
           for (let key in res) {
             journeyArray.push({ ...res[key], id: key });
           }
-
+          console.log(journeyArray);
+          
           return journeyArray;
         })
       );
@@ -69,13 +71,13 @@ export class JourneyService {
       )
       .pipe(
         map((res) => {
-          const journeyArray: Journey[] = [];
+          const journeydate: Journey[] = [];
           for (let key in res) {
-            journeyArray.push({ ...res[key], id: key });
+            journeydate.push({ ...res[key], id: key });
           }
-          journeyArray.reverse();
+          journeydate.reverse();
 
-          return journeyArray;
+          return journeydate;
         })
       );
   }
@@ -109,6 +111,8 @@ export class JourneyService {
   }
 
   
-
+ngOnDestroy(): void {
+  
+}
  
 }

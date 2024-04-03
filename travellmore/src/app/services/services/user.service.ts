@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {
   Observable,
   Subject,
+  Subscription,
   catchError,
   interval,
   map,
@@ -56,8 +57,8 @@ export class UserService {
     return new Error(errorMessage);
   }
 
-  register(email: string, password: string) {
-    return this.afauth.createUserWithEmailAndPassword(email, password);
+  async register(email: string, password: string) {
+     return await this.afauth.createUserWithEmailAndPassword(email, password);
   }
 
   login(email: string, password: string) {
@@ -71,4 +72,7 @@ export class UserService {
       this.router.navigate(['/login']);
     });
   }
+
+  
+  
 }

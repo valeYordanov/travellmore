@@ -66,7 +66,7 @@ export class ProfileService {
       `https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/users/${id}.json`,userData
     );
   }
-  getUserJourneysCount(userId: string | null): Observable<number> {
+  getUserJourneysCount(userId: string | null ): Observable<number> {
     return this.http.get<number>(`https://travellmore-91a7f-default-rtdb.europe-west1.firebasedatabase.app/journeys.json?orderBy="ownerId"&equalTo="${userId}"`)
   }
 }

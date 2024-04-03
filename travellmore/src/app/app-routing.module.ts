@@ -53,12 +53,12 @@ const routes: Routes = [
   {
     path: 'profile/:id',
 
-    component: ProfileComponent, canActivate:[AuthActivate]
+    component: ProfileComponent, 
   },
   {
     path: 'profile/:id/edit',
 
-    component: EditProfileComponent, canActivate: [AuthActivate]
+    component: EditProfileComponent, 
   },
   {
     path: 'reviews',

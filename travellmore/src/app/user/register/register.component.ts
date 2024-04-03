@@ -37,7 +37,7 @@ export class RegisterComponent {
             .storeUsers(email, username, country, tel, uid)
             .subscribe();
         }
-        this.router.navigate(['/blogs'])
+        this.router.navigate(['/login'])
       })
       .catch((error) => {
         this.errorFound = this.userService.handleError(error);
