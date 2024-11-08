@@ -113,5 +113,72 @@ form button:hover {
   background-color: rgb(10, 10, 10);
   color: #fff;
 }
+@media (max-width: 800px) {
+  .site-article {
+    grid-template-columns: 1fr 1fr; /* Change to two columns for smaller screens */
+    grid-gap: 15px; /* Reduced gap between grid items */
+  }
+
+  .card-img img {
+    height: 200px; /* Reduce image height for better fit */
+    width: 100%;
+  }
+
+  .blog-card {
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 1em; /* Reduce padding for better fit */
+    height: auto; /* Remove height constraint for flexibility */
+  }
+
+  .card-text {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 16px; /* Adjust font size for better readability */
+  }
+
+  .read-more a {
+    font-size: 16px; /* Reduce font size */
+    padding: 0.5em 1em;
+    margin-bottom: 1em;
+  }
+
+  /* Form Styling */
+  form {
+    text-align: center;
+    margin: 1.5em 0; /* Adjust margins for smaller screens */
+  }
+
+  form input {
+    width: 90%; /* Full width for inputs */
+    height: 40px;
+    font-size: 16px; /* Adjust font size */
+    margin: 0 1em;
+  }
+
+  input[placeholder="Search by title..."] {
+    padding-left: 0.5em;
+  }
+
+  form button {
+    width: 50%; /* Full width for button */
+    margin-top: 1em;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: 0.3s;
+    height: 40px;
+  }
+
+  form button:hover {
+    background-color: rgb(10, 10, 10);
+    color: #fff;
+  }
+}
+
+.not-found-blog p {
+  font-size: 25px; /* Adjust font size for smaller screens */
+  align-self: center;
+}
 
 

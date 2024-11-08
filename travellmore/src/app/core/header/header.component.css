@@ -35,3 +35,38 @@ nav ul li a:hover{
    color: #fff;
    
 }
+@media (max-width: 800px) {
+    .site-header {
+        padding: 0 1em; /* Reduce padding for smaller screens */
+        flex-direction: row; /* Keep the header items in a row */
+        justify-content: space-between; /* Ensure space is evenly distributed */
+        align-items: center; /* Vertically center the items */
+        flex-wrap: wrap; /* Allow wrapping of content if needed */
+    }
+
+    nav ul {
+        display: flex;
+        flex-wrap: nowrap; /* Prevent wrapping of nav items */
+        align-items: center; /* Vertically center the nav items */
+        width: auto; /* Don't stretch to full width */
+        margin: 0; /* Remove any extra margin */
+    }
+
+    nav ul li {
+        list-style: none;
+        padding: 0.5em; /* Reduce padding to fit everything in a row */
+    }
+
+    nav ul li a {
+        font-size: 20px; /* Adjust font size for readability */
+    }
+
+    .site-title {
+        flex-grow: 1; /* Allow title to grow and center */
+        text-align: center; /* Center the title */
+    }
+
+    .site-title h1 a {
+        font-size: 35px; /* Adjust title font size */
+    }
+}

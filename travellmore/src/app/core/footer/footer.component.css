@@ -8,3 +8,12 @@
   width: 100%;
   padding-left: 31em;
 }
+@media (max-width: 800px) {
+  .site-footer {
+    flex-direction: column;
+    padding: 1em;
+    align-items: center;
+
+    
+  }
+}

@@ -44,3 +44,24 @@
     
     
 }
+
+@media (max-width: 800px) {
+    .welcome-msg {
+        padding: 5em; /* Reduce padding on smaller screens */
+    }
+
+    .welcome-msg h2 {
+        font-size: 40px; /* Reduce the font size for smaller screens */
+        text-align: center; /* Center the heading text */
+    }
+
+    .welcome-msg p {
+        font-size: 18px; /* Reduce the font size for smaller screens */
+        text-align: center; /* Center the paragraph text */
+    }
+
+    .welcome-msg .first, .welcome-msg .second {
+        font-size: 22px; /* Reduce the size of specific parts of the text */
+        text-align: center; /* Center them */
+    }
+}

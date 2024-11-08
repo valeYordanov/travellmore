@@ -57,4 +57,21 @@ button:hover{
     border-radius: 15px;
     margin-bottom: 2em;
 }
+@media (max-width: 800px) {
+    form {
+        width: 100%;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    button {
+        width: 100%;
+    }
+    .comment, .comment-form {
+        padding: 1em;
+        margin-bottom: 1.5em;
+    }
+    .profile-img img {
+        width: 50px;
+    }
+}
 

@@ -7,6 +7,7 @@ import { Observable, map} from 'rxjs';
 import { ProfileService } from 'src/app/services/services/profile.service';
 import { UserService } from 'src/app/services/services/user.service';
 import { User } from 'src/app/types/user-type/authUser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,8 @@ export class HeaderComponent implements OnInit {
     private auth: AngularFireAuth,
 
     private userService: UserService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private route:ActivatedRoute
   ) {}
   user?: User;
   id?: string;

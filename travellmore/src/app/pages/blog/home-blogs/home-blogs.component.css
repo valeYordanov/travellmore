@@ -66,3 +66,36 @@
   background-color: skyblue;
   color: #fff;
 }
+
+@media (max-width: 800px) {
+  .site-article {
+    grid-template-columns: 1fr; /* Stack the grid items on smaller screens */
+    padding-left: 1em;
+  }
+
+  .blog-card{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 2em;
+  }
+
+  .card-img img {
+    height: 200px; /* Reduce the image height for better fit on smaller screens */
+    width: 100%; /* Ensure the image fits the container */
+  }
+
+  .primary-header {
+    font-size: 24px; /* Adjust the header font size for smaller screens */
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  .card-text {
+    font-size: 16px; /* Adjust the font size of card text for smaller screens */
+  }
+
+  .read-more a {
+    font-size: 16px; /* Reduce the font size of the "read more" link */
+    padding: 0.5em; /* Adjust padding for smaller screens */
+  }
+}

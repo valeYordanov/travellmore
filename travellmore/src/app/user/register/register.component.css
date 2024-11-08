@@ -57,3 +57,22 @@ form {
 .inputs p a:hover {
   color: #e14747;
 }
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .register-img img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1em;
+    margin-top: 2em;
+  }
+  input, button {
+    width: 100%;
+  }
+  .inputs {
+    margin-left: 0;
+    padding: 0 1em;
+  }
+}

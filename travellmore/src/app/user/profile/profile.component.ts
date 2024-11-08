@@ -1,16 +1,15 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
-import { User } from '../../types/user-type/authUser';
-import { ProfileService } from 'src/app/services/services/profile.service';
-import { Subscription, tap } from 'rxjs';
-import { UserService } from 'src/app/services/services/user.service';
+ import { User } from '../../types/user-type/authUser';
+ import { ProfileService } from 'src/app/services/services/profile.service';
+ 
+ import { UserService } from 'src/app/services/services/user.service';
 
-
-@Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
-})
+ @Component({
+   selector: 'app-profile',
+   templateUrl: './profile.component.html',
+   styleUrls: ['./profile.component.css'],
+ })
 export class ProfileComponent implements OnInit {
   id?: string;
   countOfJourneys?: number;
@@ -18,7 +17,6 @@ export class ProfileComponent implements OnInit {
   currentUser?: string | null;
   isLoading:boolean = true
 
-  
   constructor(private profileService: ProfileService,private userService:UserService) {}
   ngOnInit(): void {
     (this.profileService.getUsers().subscribe((data) => {
@@ -47,5 +45,7 @@ export class ProfileComponent implements OnInit {
         });
     });
   }
-  
+
 }
+
+
